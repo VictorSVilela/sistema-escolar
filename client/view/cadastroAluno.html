@@ -1,0 +1,34 @@
+<div ng-controller="alunoController" class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Cadastrar Aluno</h1>
+    <hr />
+    <form name="alunoForm">
+      <div class="form-group">
+        <label class="control-label" for="nome">Nome</label>
+        <input type="text" ng-model="aluno.nome" class="form-control" name="nome" ng-required="true" id="nome">
+      </div>
+      <div ng-show="alunoForm.nome.$error.required && alunoForm.nome.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo nome!
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="email">Email</label>
+        <input type="email" ng-model="aluno.email" class="form-control" name="email" ng-required="true" id="email" >
+      </div>
+      <div ng-show="alunoForm.email.$error.required && alunoForm.email.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo email!
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="idade">Idade</label>
+        <input type="number" ng-model="aluno.idade" class="form-control" name="idade" id="idade">
+      </div>
+      <hr />
+      <div class="form-group text-center">
+        <button ng-click="adicionarAluno(aluno)" class="btn btn-primary">Cadastrar</button>
+      </div>
+      {{aluno}}
+    </form>
+  </div>
+  <div>
+    {{alunos}}
+  </div>
+</div>
