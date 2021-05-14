@@ -3,10 +3,6 @@
     color: #D3D3D3 ;
 }
 
-.jumbotron {
-    margin-left: 140px;
-}
-
 .navbar-fixed-left {
     width: 140px;
     position: fixed;
@@ -26,4 +22,16 @@
 .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
     margin-top: -50px;
     margin-left: 140px;
+}
+
+.jumbotron{
+    margin-left: 140px;
+}
+
+.form-group {
+    margin-top: 40px;
+}
+
+.control-label {
+    margin-right: 100%;
 }
