@@ -15,4 +15,17 @@ function AlunoController($scope, $http) {
             $scope.alunoForm.$setPristine();
         });
     };
+
+    $scope.deletarAluno = function (id){
+        $http.delete(`http://localhost:8080/rest/alunos/${id}`).then(response => {
+            $scope.alunos = response.data;
+            this.ngOnInit();
+        });
+    };
+
+    $scope.editarAluno = function (id, aluno) {
+        $http.put(`http://localhost:8080/rest/alunos/${id}`, aluno).then(response => {
+            $scope.alunos = response.data;
+        });
+    }
 }

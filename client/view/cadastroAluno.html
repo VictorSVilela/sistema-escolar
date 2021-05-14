@@ -22,8 +22,23 @@
       </div>
       <hr />
       <div class="form-group text-center">
-        <button ng-click="adicionarAluno(aluno)" class="btn btn-primary">Cadastrar</button>
+        <button ng-click="adicionarAluno(aluno)" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado">Cadastrar</button>
       </div>
-      {{aluno}}
     </form>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 align="center" class="modal-title" id="TituloModalCentralizado">Aluno cadastrado com sucesso!</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
