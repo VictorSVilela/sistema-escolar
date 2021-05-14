@@ -14,5 +14,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/cadastroAluno',
             templateUrl: 'view/cadastroAluno.html',
             controller: 'alunoController'
+        })
+        .state('listarAluno', {
+            url: '/listarAluno',
+            templateUrl: 'view/listarAluno.html',
+            controller: 'alunoController'
         });
 });

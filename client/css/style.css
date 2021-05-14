@@ -1,6 +1,10 @@
+body {
+    background-color: #eee;
+}
+
 .logo {
     text-align: center;
-    color: #D3D3D3 ;
+    color: #eee ;
 }
 
 .navbar-fixed-left {
@@ -34,4 +38,13 @@
 
 .control-label {
     margin-right: 100%;
+}
+
+thead {
+    background-color: #3c3c3c;
+    color: white;
+}
+
+th {
+    text-align: center;
 }
