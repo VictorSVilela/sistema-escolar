@@ -3,9 +3,8 @@
     color: #D3D3D3 ;
 }
 
-.home {
-    position: absolute;
-    padding-left: 150px;
+.jumbotron {
+    margin-left: 140px;
 }
 
 .navbar-fixed-left {
