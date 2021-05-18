@@ -5,7 +5,7 @@ angular.module("TreinamentoApp",['ui.router']).config(function ($stateProvider, 
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'view/home.html',
+            templateUrl: 'home/home.html',
             controller: 'homeController'
         })
 });
