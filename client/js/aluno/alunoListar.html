@@ -1,0 +1,29 @@
+<div ng-controller="AlunoListarController" class="jumbotron text-center">
+    <h1 class="text-center">Lista de Alunos</h1>
+    <hr />
+    <div>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Idade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="aluno in alunos">
+                    <td>{{aluno.id}}</td>
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.email}}</td>
+                    <td>{{aluno.idade}}</td>
+                    <td>
+                        <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar"></a>
+                        <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletarAluno(aluno.id)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
