@@ -4,17 +4,17 @@ angular.module("TreinamentoApp")
         $stateProvider
             .state('alunoEditar', {
                 url: '/aluno/{id:int}',
-                templateUrl: 'js/aluno/alunoIncluir.html',
+                templateUrl: 'aluno/alunoIncluir.html',
                 controller: 'AlunoEditarController'
             })
             .state('alunoIncluir', {
                 url: '/aluno/incluir',
-                templateUrl: 'js/aluno/alunoIncluir.html',
+                templateUrl: 'aluno/alunoIncluir.html',
                 controller: 'AlunoIncluirController'
             })
             .state('alunoListar', {
                 url: '/aluno',
-                templateUrl: 'js/aluno/alunoListar.html',
+                templateUrl: 'aluno/alunoListar.html',
                 controller: 'AlunoListarController'
             });
     });
