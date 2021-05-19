@@ -19,7 +19,7 @@
                     <td>{{aluno.email}}</td>
                     <td>{{aluno.idade}}</td>
                     <td>
-                        <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar"></a>
+                        <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar({id: aluno.id})"></a>
                         <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal"></button>
 
                         <!-- Modal Deletar -->
