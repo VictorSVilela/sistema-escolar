@@ -20,17 +20,17 @@
                     <td>{{aluno.idade}}</td>
                     <td>
                         <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar({id: aluno.id})"></a>
-                        <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal"></button>
+                        <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{aluno.id}}"></button>
 
                         <!-- Modal Deletar -->
-                        <div class="modal fade" id="deletarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal fade" id="deletarModal{{aluno.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h2 class="modal-title">Deletar Aluno</h2>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Deseja realmente deletar o aluno?</p>
+                                        <p>Deseja realmente deletar o aluno? {{aluno.nome}}</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

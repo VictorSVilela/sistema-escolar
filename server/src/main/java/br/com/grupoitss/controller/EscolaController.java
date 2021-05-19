@@ -15,7 +15,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.grupoitss.dao.EscolaDao;
+import br.com.grupoitss.repository.EscolaRepository;
 import br.com.grupoitss.model.Escola;
 
 @Path("/escolas")
@@ -23,7 +23,7 @@ public class EscolaController {
 
     private static final Map<Long, Escola> escolas = new HashMap<>();
 
-    private final EscolaDao repository = new EscolaDao();
+    private final EscolaRepository repository = new EscolaRepository();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

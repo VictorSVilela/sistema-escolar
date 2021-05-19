@@ -1,4 +1,4 @@
-package br.com.grupoitss.dao;
+package br.com.grupoitss.repository;
 
 import br.com.grupoitss.model.Escola;
 import org.hibernate.*;
@@ -9,13 +9,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class EscolaDao {
+public class EscolaRepository {
 
     private final EntityManagerFactory emf;
 
     private final EntityManager em;
 
-    public EscolaDao(){
+    public EscolaRepository(){
         this.emf = Persistence.createEntityManagerFactory("persistence_unit_sistema_escolar");
 
         this.em = this.emf.createEntityManager();
