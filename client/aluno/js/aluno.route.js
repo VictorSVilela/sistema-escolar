@@ -3,9 +3,14 @@ angular.module("TreinamentoApp")
 
         $stateProvider
             .state('alunoEditar', {
-                url: '/aluno/{id:int}',
+                url: '/aluno/{id}',
                 templateUrl: 'aluno/alunoIncluir.html',
-                controller: 'AlunoEditarController'
+                controller: 'AlunoEditarController',
+                resolve: {
+                    aluno: function (AlunoService, $state) {
+                        return AlunoService.consultar($state.id);
+                    }
+                }
             })
             .state('alunoIncluir', {
                 url: '/aluno/incluir',

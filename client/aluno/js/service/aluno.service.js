@@ -15,11 +15,16 @@ angular.module("TreinamentoApp").factory("AlunoService", function ($http) {
         return $http.put(`http://localhost:8080/rest/alunos/${id}`, aluno);
     };
 
+    function _consultar(id) {
+        return $http.get(`http://localhost:8080/rest/alunos/${id}`);
+    };
+
     return {
         getALunos: _getAlunos,
         adicionarAluno: _adicionarAluno,
         deletarAluno: _deletarAluno,
-        editarAluno: _editarAluno
+        editarAluno: _editarAluno,
+        consultar: _consultar
     };
 
 
