@@ -1,9 +1,15 @@
 <div ng-controller="AlunoListarController" class="jumbotron text-center">
-    <h1 class="text-center">Lista de Alunos</h1>
+    <h1 class="text-center">Alunos</h1>
     <hr />
     <div>
         <table class="table table-bordered table-hover">
             <thead>
+            <tr>
+                <th colspan="4"><h3>Lista de Alunos</h3></th>
+                <th>
+                    <button title="Cadastrar Aluno" class="btn btn-primary btn-block" ui-sref="alunoIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+                </th>
+            </tr>
                 <tr>
                     <th>Id</th>
                     <th>Nome</th>
@@ -30,7 +36,8 @@
                                         <h2 class="modal-title">Deletar Aluno</h2>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Deseja realmente deletar o aluno? {{aluno.nome}}</p>
+                                        <h4>Deseja realmente deletar o aluno: </h4>
+                                        <h4>{{aluno.nome}}</h4>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

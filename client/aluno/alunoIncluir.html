@@ -22,7 +22,8 @@
       </div>
       <hr />
       <div class="form-group text-center">
-        <button ng-click="adicionarAluno(aluno)" class="btn btn-primary" ng-disabled="alunoForm.$invalid">Cadastrar</button>
+          <button type="button" class="btn btn-default" ui-sref="alunoListar">Cancelar</button>
+        <button ng-click="adicionarAluno(aluno)" class="btn btn-primary" ng-disabled="alunoForm.$invalid" ui-sref="alunoListar">Cadastrar</button>
       </div>
     </form>
 </div>
