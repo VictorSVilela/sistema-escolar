@@ -1,4 +1,4 @@
-package br.com.grupoitss.controller;
+package br.com.grupoitss.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;

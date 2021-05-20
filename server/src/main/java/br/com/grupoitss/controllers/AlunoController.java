@@ -1,8 +1,6 @@
-package br.com.grupoitss.controller;
+package br.com.grupoitss.controllers;
 
 import br.com.grupoitss.model.Aluno;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

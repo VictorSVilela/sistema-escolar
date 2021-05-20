@@ -1,9 +1,7 @@
 package br.com.grupoitss;
 
-import br.com.grupoitss.controller.AlunoController;
-import br.com.grupoitss.controller.EscolaController;
+import br.com.grupoitss.controllers.AlunoController;
 import br.com.grupoitss.model.Aluno;
-import br.com.grupoitss.model.Escola;
 
 public class Teste {
     public static void main(String[] args) {
