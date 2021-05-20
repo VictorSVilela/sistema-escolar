@@ -1,0 +1,52 @@
+<div ng-controller="UsuarioListarController" class="jumbotron text-center">
+    <h1 class="text-center">Usuários</h1>
+    <hr />
+    <div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th colspan="4"><h3>Lista de Usuários</h3></th>
+                <th>
+                    <button title="Cadastrar Usuário" class="btn btn-primary btn-block" ui-sref="usuarioIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+                </th>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th colspan="2">Nome</th>
+                <th>Data de Nascimento</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="usuario in usuarios">
+                <td>{{usuario.id}}</td>
+                <td colspan="2">{{usuario.nome}}</td>
+                <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+                <td>
+                    <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="usuarioEditar({id: usuario.id})"></a>
+                    <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{usuario.id}}"></button>
+
+                    <!-- Modal Deletar -->
+                    <div class="modal fade" id="deletarModal{{usuario.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title">Deletar Usuário</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Deseja realmente deletar o usuário: </h4>
+                                    <h4>{{usuario.nome}}</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="deletarUsuario(usuario.id)">Deletar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

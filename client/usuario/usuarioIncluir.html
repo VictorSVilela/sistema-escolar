@@ -1,0 +1,22 @@
+<div ng-controller="UsuarioIncluirController" class="jumbotron text-center">
+  <h1 class="text-center">Cadastrar Usuário</h1>
+  <hr />
+  <form name="usuarioForm">
+    <div class="form-group container">
+      <label class="control-label" for="nome">Nome</label>
+      <input type="text" ng-model="usuario.nome" class="form-control" name="nome" id="nome" placeholder="Nome" ng-required="true">
+    </div>
+    <div ng-show="usuarioForm.nome.$error.required && usuarioForm.nome.$dirty" class="alert alert-danger">
+      Por favor, preencha o campo nome!
+    </div>
+    <div class="form-group dtNas">
+      <label class="lDtNas" for="nome">Data de Nascimento</label>
+      <input type="date" ng-model="usuario.dataNascimento" class="form-control" name="dataNascimento" id="dataNascimento" placeholder="DD/MM/AAAA" ng-required="true">
+    </div>
+    <hr />
+    <div class="form-group text-center">
+      <button type="button" class="btn btn-default" ui-sref="usuarioListar">Cancelar</button>
+      <button ng-click="incluirUsuario(usuario)" class="btn btn-primary" ng-disabled="usuarioForm.$invalid" ui-sref="usuarioListar">Cadastrar</button>
+    </div>
+  </form>
+</div>

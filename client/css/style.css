@@ -48,3 +48,12 @@ thead {
 th {
     text-align: center;
 }
+
+.dtNas {
+    margin-left: 120px;
+    margin-right: 80%;
+}
+
+.lDtNas {
+    margin-left: -20px;
+}
