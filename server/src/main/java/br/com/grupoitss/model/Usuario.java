@@ -12,12 +12,12 @@ public class Usuario {
     private Long id;
 
     private String nome;
-    private Date dataNascimento;
+    private String dataNascimento;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, Date dataNascimento) {
+    public Usuario(Long id, String nome, String dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -39,11 +39,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

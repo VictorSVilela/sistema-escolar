@@ -4,14 +4,14 @@
   <form name="usuarioForm">
     <div class="form-group container">
       <label class="control-label" for="nome">Nome</label>
-      <input type="text" ng-model="usuario.nome" class="form-control" name="nome" id="nome" placeholder="Nome" ng-required="true">
+      <input type="text" ng-model="usuario.nome" class="form-control limInput" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>
     </div>
     <div ng-show="usuarioForm.nome.$error.required && usuarioForm.nome.$dirty" class="alert alert-danger">
       Por favor, preencha o campo nome!
     </div>
     <div class="form-group dtNas">
-      <label class="lDtNas" for="nome">Data de Nascimento</label>
-      <input type="date" ng-model="usuario.dataNascimento" class="form-control" name="dataNascimento" id="dataNascimento" placeholder="DD/MM/AAAA" ng-required="true">
+      <label class="lDtNas" for="dataNascimento">Data de Nascimento</label>
+      <input type="text" ng-model="usuario.dataNascimento" class="form-control" name="dataNascimento" id="dataNascimento" placeholder="DD/MM/AAAA" ng-required="true" ui-date/>
     </div>
     <hr />
     <div class="form-group text-center">
