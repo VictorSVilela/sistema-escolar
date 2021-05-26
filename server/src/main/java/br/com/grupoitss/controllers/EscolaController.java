@@ -19,6 +19,7 @@ public class EscolaController {
     @Produces(MediaType.APPLICATION_JSON)
     public Escola incluir(Escola escola) {
         escola.setId(idGerador++);
+        escola.setStatus(true);
         escolas.put(escola.getId(), escola);
         return escola;
     }

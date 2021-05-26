@@ -1,0 +1,57 @@
+<div ng-controller="EscolaListarController" class="jumbotron text-center">
+  <h1 class="text-center">Escolas</h1>
+  <hr />
+  <div>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th colspan="5"><h3>Lista de Escolas</h3></th>
+        <th>
+          <button title="Cadastrar Escola" class="btn btn-primary btn-block" ui-sref="escolaIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+        </th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Diretor</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="escola in escolas">
+        <td>{{escola.id}}</td>
+        <td>{{escola.nome}}</td>
+        <td>{{escola.diretor}}</td>
+        <td>{{escola.descricao}}</td>
+        <td>{{escola.status}}</td>
+        <td>
+          <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="escolaEditar({id: escola.id})"></a>
+          <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{escola.id}}"></button>
+
+          <!-- Modal Deletar -->
+          <div class="modal fade" id="deletarModal{{escola.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title"><b>Deletar Escola</b></h2>
+                </div>
+                <div class="modal-body">
+                  <h4>Deseja realmente deletar a escola: </h4>
+                  <br/>
+                  <h3>{{escola.nome}}</h3>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-danger" ng-click="deletarEscola(escola.id)">Deletar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
