@@ -12,20 +12,22 @@ public class Escola {
     private Long id;
 
     private String nome;
-    private String usuario;
+
+    @OneToOne
+    private Usuario diretor;
+
+    private String descricao;
+    private boolean status;
 
     public Escola() {
     }
 
-    public Escola(Long id, String nome) {
+    public Escola(Long id, String nome, Usuario diretor, String descricao, boolean status) {
         this.id = id;
         this.nome = nome;
-    }
-
-    public Escola(Long id, String nome, String usuario) {
-        this.id = id;
-        this.nome = nome;
-        this.usuario = usuario;
+        this.diretor = diretor;
+        this.descricao = descricao;
+        this.status = status;
     }
 
     public Long getId() {
@@ -44,4 +46,27 @@ public class Escola {
         this.nome = nome;
     }
 
+    public Usuario getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(Usuario diretor) {
+        this.diretor = diretor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }
