@@ -27,7 +27,7 @@ public class EscolaController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response consultar(Long id) {
+    public Response consultar(@PathParam("id") Long id) {
         if (escolas.containsKey(id)) {
             Escola escola = escolas.get(id);
             return Response.ok(escola).build();

@@ -57,3 +57,8 @@ th {
 .lDtNas {
     margin-left: -20px;
 }
+
+textarea {
+    resize: none;
+    height: 200%;
+}

@@ -6,6 +6,14 @@ function EscolaListarController($scope, EscolaService) {
 
     $scope.deletarEscola = deletarEscola;
 
+    $scope.mudarStatus = function (escola) {
+        if(escola.status) {
+            return "Ativo";
+        } else {
+            return "Inativo"
+        }
+    }
+
     _inicializar();
 
     ////////////////////////////////////////////////
