@@ -1,0 +1,44 @@
+<div ng-controller="CursoIncluirController" class="jumbotron text-center">
+    <h1 class="text-center">Cadastrar Curso</h1>
+    <hr />
+    <form name="cursoForm">
+        <div class="form-group container">
+            <label class="control-label" for="nome">Nome</label>
+            <input type="text" ng-model="curso.nome" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>
+        </div>
+        <div ng-show="cursoForm.nome.$error.required && cursoForm.nome.$dirty" class="alert alert-danger">
+            Por favor, preencha o campo nome!
+        </div>
+        <div class="form-group container">
+            <label class="control-label" for="sigla">Sigla</label>
+            <input type="text" ng-model="curso.sigla" class="form-control" name="sigla" id="sigla" placeholder="Sigla" maxlength="5" ng-required="true"/>
+        </div>
+        <div class="form-group container" ng-controller="UsuarioListarController">
+            <label class="control-label" for="coordenadores">Coordenador</label>
+            <select class="form-control" name="coordenadores" id="coordenadores" ng-model="curso.coordenador" ng-options="usuario.nome for usuario in usuarios">
+                <option value="">Selecione...</option>
+            </select>
+        </div>
+        <div class="form-group container" ng-controller="EscolaListarController">
+            <label class="control-label" for="escolas">Escola</label>
+            <select class="form-control" name="escolas" id="escolas" ng-model="curso.escola" ng-options="escola.nome for escola in escolas">
+                <option value="">Selecione...</option>
+            </select>
+        </div>
+        <div class="form-group container" ng-controller="MateriaListarController">
+            <label class="control-label" for="materias">Matérias</label>
+            <select class="form-control" name="materias" id="materias" ng-model="curso.materia" ng-options="materia.nome for materia in materias">
+                <option value="">Selecione...</option>
+            </select>
+        </div>
+        <div class="form-group container">
+            <label class="control-label" for="descricao">Descrição</label>
+            <textarea class="form-control" ng-model="curso.descricao" maxlength="2500" name="descricao" id="descricao" placeholder="Descrição" rows="18"></textarea>
+        </div>
+        <hr />
+        <div class="form-group text-center">
+            <button type="button" class="btn btn-default" ui-sref="cursoListar">Cancelar</button>
+            <button ng-click="incluirCurso(curso)" class="btn btn-primary" ng-disabled="cursoForm.$invalid" ui-sref="cursoListar">Cadastrar</button>
+        </div>
+    </form>
+</div>

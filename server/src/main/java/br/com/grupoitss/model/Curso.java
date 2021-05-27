@@ -12,7 +12,7 @@ public class Curso {
     private Long id;
 
     private String nome;
-    private String matricula;
+    private String sigla;
 
     @OneToOne
     private Usuario coordenador;
@@ -28,10 +28,10 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(Long id, String nome, String matricula, Usuario coordenador, Escola escola, Set<Materia> materias, String descricao) {
+    public Curso(Long id, String nome, String sigla, Usuario coordenador, Escola escola, Set<Materia> materias, String descricao) {
         this.id = id;
         this.nome = nome;
-        this.matricula = matricula;
+        this.sigla = sigla;
         this.coordenador = coordenador;
         this.escola = escola;
         this.materias = materias;
@@ -54,12 +54,12 @@ public class Curso {
         this.nome = nome;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getSigla() {
+        return sigla;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
     public Usuario getCoordenador() {

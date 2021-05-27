@@ -1,0 +1,59 @@
+<div ng-controller="CursoListarController" class="jumbotron text-center">
+    <h1 class="text-center">Cursos</h1>
+    <hr />
+    <div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th colspan="6"><h3>Lista de Cursos</h3></th>
+                <th>
+                    <button title="Cadastrar Curso" class="btn btn-primary btn-block" ui-sref="cursoIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+                </th>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Sigla</th>
+                <th>Coordenador</th>
+                <th>Matérias</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="curso in cursos">
+                <td>{{curso.id}}</td>
+                <td>{{curso.nome}}</td>
+                <td>{{curso.sigla}}</td>
+                <td>{{curso.coordenador.nome}}</td>
+                <td>{{curso.materias}}</td>
+                <td>{{curso.descricao}}</td>
+                <td>
+                    <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="cursoEditar({id: curso.id})"></a>
+                    <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{curso.id}}"></button>
+
+                    <!-- Modal Deletar -->
+                    <div class="modal fade" id="deletarModal{{curso.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title"><b>Deletar Curso</b></h2>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Deseja realmente deletar o curso: </h4>
+                                    <br/>
+                                    <h3>{{curso.nome}}</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="deletarCurso(curso.id)">Deletar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

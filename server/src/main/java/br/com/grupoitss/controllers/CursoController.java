@@ -8,6 +8,7 @@ import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
 
+@Path("/cursos")
 public class CursoController {
 
     private static final Map<Long, Curso> cursos = new HashMap<>();
