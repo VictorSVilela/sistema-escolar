@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_materia")
+@Table(name = "tb_curso")
 public class Curso {
 
     @Id
