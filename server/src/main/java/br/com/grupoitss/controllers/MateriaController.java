@@ -1,6 +1,5 @@
 package br.com.grupoitss.controllers;
 
-import br.com.grupoitss.model.Escola;
 import br.com.grupoitss.model.Materia;
 
 import javax.ws.rs.*;
