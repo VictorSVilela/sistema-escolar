@@ -1,7 +1,8 @@
-<div ng-controller="CursoIncluirController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Cadastrar Curso</h1>
     <hr />
     <form name="cursoForm">
+        <pre>{{curso | json}}</pre>
         <div class="form-group container">
             <label class="control-label" for="nome">Nome</label>
             <input type="text" ng-model="curso.nome" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>
@@ -13,22 +14,31 @@
             <label class="control-label" for="sigla">Sigla</label>
             <input type="text" ng-model="curso.sigla" class="form-control" name="sigla" id="sigla" placeholder="Sigla" maxlength="5" ng-required="true"/>
         </div>
+
+<!--        <div class="row">
+            <div class="col-12">
+                <campo-usuarios name="coordenadores" id="coordenadores" ng-model="curso.coordenador.id" label="Coordenador"></campo-usuarios>
+            </div>
+        </div>-->
         <div class="form-group container" ng-controller="UsuarioListarController">
             <label class="control-label" for="coordenadores">Coordenador</label>
-            <select class="form-control" name="coordenadores" id="coordenadores" ng-model="curso.coordenador" ng-options="usuario.nome for usuario in usuarios">
+            <select class="form-control" name="coordenadores" id="coordenadores" ng-model="curso.coordenador.id">
                 <option value="">Selecione...</option>
+                <option ng-repeat="usuario in usuarios" ng-value="usuario.id">{{usuario.nome}}</option>
             </select>
         </div>
         <div class="form-group container" ng-controller="EscolaListarController">
             <label class="control-label" for="escolas">Escola</label>
-            <select class="form-control" name="escolas" id="escolas" ng-model="curso.escola" ng-options="escola.nome for escola in escolas">
+            <select class="form-control" name="escolas" id="escolas" ng-model="curso.escola.id">
                 <option value="">Selecione...</option>
+                <option ng-repeat="escola in escolas" ng-value="escola.id">{{escola.nome}}</option>
             </select>
         </div>
         <div class="form-group container" ng-controller="MateriaListarController">
             <label class="control-label" for="materias">Matérias</label>
-            <select class="form-control" name="materias" id="materias" ng-model="curso.materia" ng-options="materia.nome for materia in materias">
+            <select class="form-control" name="materias" id="materias" ng-model="curso.materiasIds" multiple>
                 <option value="">Selecione...</option>
+                <option ng-repeat="materia in materias" ng-value="materia.id">{{materia.nome}}</option>
             </select>
         </div>
         <div class="form-group container">
@@ -38,7 +48,7 @@
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="cursoListar">Cancelar</button>
-            <button ng-click="incluirCurso(curso)" class="btn btn-primary" ng-disabled="cursoForm.$invalid" ui-sref="cursoListar">Cadastrar</button>
+            <button ng-click="incluirCurso()" class="btn btn-primary" ng-disabled="cursoForm.$invalid">Cadastrar</button>
         </div>
     </form>
 </div>

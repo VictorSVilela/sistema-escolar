@@ -25,9 +25,9 @@
         </div>
         <div class="form-group container">
             <label class="control-label" for="status">Status</label>
-            <select class="form-control" name="status" id="status" ng-model="escola.status" ng-option="track by escola.id">
-                <option value="true">Ativo</option>
-                <option value="false">Inativo</option>
+            <select class="form-control" name="status" id="status" ng-model="escola.status">
+                <option ng-value="true">Ativo</option>
+                <option ng-value="false">Inativo</option>
             </select>
         </div>
         <hr />

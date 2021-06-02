@@ -1,6 +1,7 @@
 package br.com.grupoitss.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,16 +15,19 @@ public class Curso {
     private String nome;
     private String sigla;
 
-    @OneToOne
+    @ManyToOne
     private Usuario coordenador;
 
     @ManyToOne
     private Escola escola;
 
-    @OneToMany
+    @ManyToMany
     private Set<Materia> materias;
 
     private String descricao;
+
+    @Transient
+    private List<Long> materiasIds;
 
     public Curso() {
     }
@@ -36,6 +40,10 @@ public class Curso {
         this.escola = escola;
         this.materias = materias;
         this.descricao = descricao;
+    }
+
+    public Curso(long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -92,5 +100,13 @@ public class Curso {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Long> getMateriasIds() {
+        return materiasIds;
+    }
+
+    public void setMateriasIds(List<Long> materiasIds) {
+        this.materiasIds = materiasIds;
     }
 }

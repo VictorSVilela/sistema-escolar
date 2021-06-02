@@ -1,12 +1,12 @@
 package br.com.grupoitss.controllers;
 
 import br.com.grupoitss.model.Curso;
+import br.com.grupoitss.model.Materia;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Path("/cursos")
 public class CursoController {
@@ -18,9 +18,22 @@ public class CursoController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Curso incluir(Curso curso) {
+        /**
+         * Java 8
+         * Stream API
+         * Optional API
+         */
+        Set<Materia> materias = new HashSet<>();
+        for (Long aLong : curso.getMateriasIds()) {
+            Materia materia = new Materia(aLong);
+            materias.add(materia);
+        }
+
+        curso.setMaterias(materias);
+
         curso.setId(idGerador++);
         cursos.put(curso.getId(), curso);
-        return curso;
+        return curso;//DTO
     }
 
     @GET

@@ -15,7 +15,7 @@ public class Aluno {
     private int idade;
 
 
-    public Aluno() {
+    public Aluno(Long aLong) {
     }
 
     public Aluno(Long id, String nome, String email, int idade) {

@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("CursoIncluirController", CursoIncluirController);
 
-CursoIncluirController.$inject = ['$scope', 'CursoService'];
+CursoIncluirController.$inject = ['$scope', 'CursoService', '$state'];
 
-function CursoIncluirController($scope, CursoService) {
+function CursoIncluirController($scope, CursoService, $state) {
 
     $scope.incluirCurso = incluirCurso;
 
@@ -11,19 +11,13 @@ function CursoIncluirController($scope, CursoService) {
     ////////////////////////////////////////////////
 
     function _inicializar() {
-        listar();
+        $scope.curso = {};
     }
 
-    function listar(){
-        CursoService.getCursos().then(response => {
-            $scope.cursos = response.data;
-        });
-    }
-
-    function incluirCurso(curso) {
-        CursoService.incluirCurso(curso).then(response => {
-            $scope.cursos = response.data;
-            listar();
+    function incluirCurso() {
+        CursoService.incluirCurso($scope.curso).then(() => {
+            window.alert('Curso cadastrado com sucesso!');
+            $state.go('cursoListar');
         });
     }
 }

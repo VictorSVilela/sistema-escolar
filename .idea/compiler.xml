@@ -9,8 +9,8 @@
         <module name="sistema_escolar" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="sistema_escolar" target="1.7" />
+    <bytecodeTargetLevel target="8">
+      <module name="sistema_escolar" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

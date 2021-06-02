@@ -5,7 +5,7 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th colspan="6"><h3>Lista de Cursos</h3></th>
+                <th colspan="7"><h3>Lista de Cursos</h3></th>
                 <th>
                     <button title="Cadastrar Curso" class="btn btn-primary btn-block" ui-sref="cursoIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
                 </th>
@@ -15,6 +15,7 @@
                 <th>Nome</th>
                 <th>Sigla</th>
                 <th>Coordenador</th>
+                <th>Escola</th>
                 <th>Matérias</th>
                 <th>Descrição</th>
                 <th>Ações</th>
@@ -25,7 +26,8 @@
                 <td>{{curso.id}}</td>
                 <td>{{curso.nome}}</td>
                 <td>{{curso.sigla}}</td>
-                <td>{{curso.coordenador.nome}}</td>
+                <td>{{curso.coordenador}}</td>
+                <td>{{curso.escola}}</td>
                 <td>{{curso.materias}}</td>
                 <td>{{curso.descricao}}</td>
                 <td>

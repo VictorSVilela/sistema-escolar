@@ -27,6 +27,10 @@ public class Materia {
         this.descricao = descricao;
     }
 
+    public Materia(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
