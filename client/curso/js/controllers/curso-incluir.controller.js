@@ -4,20 +4,20 @@ CursoIncluirController.$inject = ['$scope', 'CursoService', '$state'];
 
 function CursoIncluirController($scope, CursoService, $state) {
 
-    $scope.incluirCurso = incluirCurso;
-
     _inicializar();
 
     ////////////////////////////////////////////////
 
     function _inicializar() {
+        $scope.incluirCurso = incluirCurso;
         $scope.curso = {};
+        $scope.curso.coordenador={};
     }
 
     function incluirCurso() {
-        CursoService.incluirCurso($scope.curso).then(() => {
-            window.alert('Curso cadastrado com sucesso!');
-            $state.go('cursoListar');
+        CursoService.incluirCurso($scope.curso).then( response => {
+            $scope.curso = response;
+            $state.go('cursoListar', {id: $scope.curso.id});
         });
     }
 }

@@ -22,11 +22,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="curso in cursos">
+            <tr ng-repeat="curso in cursos track by $index">
                 <td>{{curso.id}}</td>
                 <td>{{curso.nome}}</td>
                 <td>{{curso.sigla}}</td>
-                <td>{{curso.coordenador}}</td>
+                <td>{{curso.coordenador.nome}}</td>
                 <td>{{curso.escola}}</td>
                 <td>{{curso.materias}}</td>
                 <td>{{curso.descricao}}</td>

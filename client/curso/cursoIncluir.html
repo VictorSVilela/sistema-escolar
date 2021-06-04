@@ -37,7 +37,6 @@
         <div class="form-group container" ng-controller="MateriaListarController">
             <label class="control-label" for="materias">Matérias</label>
             <select class="form-control" name="materias" id="materias" ng-model="curso.materiasIds" multiple>
-                <option value="">Selecione...</option>
                 <option ng-repeat="materia in materias" ng-value="materia.id">{{materia.nome}}</option>
             </select>
         </div>

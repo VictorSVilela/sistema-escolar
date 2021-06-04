@@ -4,7 +4,11 @@ angular.module("TreinamentoApp").factory("CursoService", function ($http) {
     };
 
     function _incluirCurso(curso) {
-        return $http.post('http://localhost:8080/rest/cursos', curso);
+        return $http.post('http://localhost:8080/rest/cursos', curso)
+            .then(response => {
+                window.alert("Curso cadastrado com sucesso");
+                return response.data;
+            });
     };
 
     function _deletarCurso(id) {

@@ -1,21 +1,34 @@
 package br.com.grupoitss.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_aluno")
 public class Aluno {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "nome", nullable = false)
     private String nome;
+
+    
     private String email;
-    private int idade;
 
+    private Integer idade;
 
-    public Aluno(Long aLong) {
+    @Column(name = "data_matricula")
+    private Date dataDaMatricula;
+
+    private Long sequencia;
+    private String matricula;
+
+    public Aluno() {}
+
+    public Aluno(Long id) {
+        this.id = id;
     }
 
     public Aluno(Long id, String nome, String email, int idade) {
@@ -55,5 +68,29 @@ public class Aluno {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public Date getDataDaMatricula() {
+        return dataDaMatricula;
+    }
+
+    public void setDataDaMatricula(Date dataDaMatricula) {
+        this.dataDaMatricula = dataDaMatricula;
+    }
+
+    public Long getSequencia() {
+        return sequencia;
+    }
+
+    public void setSequencia(Long sequencia) {
+        this.sequencia = sequencia;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 }

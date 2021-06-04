@@ -1,6 +1,7 @@
 package br.com.grupoitss.controllers;
 
 import br.com.grupoitss.model.Aluno;
+import br.com.grupoitss.service.AlunoService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,56 +12,42 @@ import java.util.Map;
 @Path("/alunos")
 public class AlunoController {
 
-    private static final Map<Long, Aluno> alunos = new HashMap<>();
-    private static Long idGerador = 1L;
+    private static final AlunoService alunoService = new AlunoService();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Aluno adicionar(Aluno aluno) {
-        aluno.setId(idGerador ++);
-        alunos.put(aluno.getId(), aluno);
-        return aluno;
+    public Response adicionar(Aluno aluno) {
+        return Response.status(Response.Status.CREATED).entity(alunoService.inserir(aluno)).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response consultar(@PathParam("id") Long id) {
-        if(alunos.containsKey(id)){
-            Aluno aluno = alunos.get(id);
-            return Response.ok(aluno).build();
-        }
-       return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok().entity(alunoService.consultar(id)).build();
     }
 
     @PUT
     @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(@PathParam("id") Long id, Aluno aluno) {
-        if(alunos.containsKey(id)){
-            aluno.setId(id);
-            alunos.put(id, aluno);
-            return Response.ok(alunos.get(id)).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+    public Response alterar(Aluno aluno) {
+        return Response.ok().entity(alunoService.editar(aluno)).build();
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletar(@PathParam("id") Long id) {
-        if (alunos.containsKey(id)){
-            alunos.remove(id);
-            return Response.ok().build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        alunoService.deletar(id);
+        return Response.ok().build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodos() {
-        return Response.ok(alunos.values()).build();
+        return Response.ok().entity(alunoService.listarTodos()).build();
     }
 
 }
