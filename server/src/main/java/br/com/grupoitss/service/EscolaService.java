@@ -10,6 +10,7 @@ public class EscolaService {
     private static final EscolaRepository escolaRepository= new EscolaRepository();
 
     public Escola inserir (Escola escola){
+        escola.setStatus(true);
         return escolaRepository.salvar(escola);
     }
 

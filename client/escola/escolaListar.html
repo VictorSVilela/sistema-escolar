@@ -20,12 +20,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="escola in escolas">
+      <tr ng-repeat="escola in escolas track by escola.id">
         <td>{{escola.id}}</td>
         <td>{{escola.nome}}</td>
         <td>{{escola.diretor.nome}}</td>
         <td>{{escola.descricao}}</td>
-        <td ng-if="mudarStatus(escola)">{{escola.status}}</td>
+        <td>{{escola.status}}</td>
         <td>
           <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="escolaEditar({id: escola.id})"></a>
           <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{escola.id}}"></button>

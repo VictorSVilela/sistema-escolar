@@ -2,6 +2,7 @@ package br.com.grupoitss.repository;
 
 import br.com.grupoitss.config.HibernateConfig;
 import br.com.grupoitss.model.Escola;
+import br.com.grupoitss.model.Usuario;
 import org.hibernate.*;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
@@ -28,14 +29,29 @@ public class EscolaRepository extends BaseRepository<Escola> {
                         .add(Projections.property("bean.id").as("id"))
                         .add(Projections.property("bean.nome").as("nome"))
                         .add(Projections.property("diretorEscola.nome").as("diretor.nome"))
-                        .add(Projections.property("bean.ativa").as("ativa"))
+                        .add(Projections.property("bean.status").as("status"))
                         .add(Projections.property("bean.descricao").as("descricao"))))
                 .setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP)
                 .list();
 
         List<Escola> escolas = new ArrayList<>();
 
+        result.forEach(row -> escolas.add(escolaBuilder(row)));
+
         return escolas;
+    }
+
+    private Escola escolaBuilder(Map<String, Object> row) {
+        Usuario diretor = new Usuario();
+        diretor.setNome((String) row.get("diretor.nome"));
+
+        Escola escola = new Escola();
+        escola.setId((Long) row.get("id"));
+        escola.setNome((String) row.get("nome"));
+        escola.setDescricao((String) row.get("descricao"));
+        escola.setStatus((boolean) row.get("status"));
+        escola.setDiretor(diretor);
+        return escola;
     }
 
 }

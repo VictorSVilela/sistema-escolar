@@ -18,7 +18,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="usuario in usuarios">
+            <tr ng-repeat="usuario in usuarios track by usuario.id">
                 <td>{{usuario.id}}</td>
                 <td colspan="2">{{usuario.nome}}</td>
                 <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>

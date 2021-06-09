@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="aluno in alunos">
+                <tr ng-repeat="aluno in alunos track by aluno.id">
                     <td>{{aluno.id}}</td>
                     <td>{{aluno.nome}}</td>
                     <td>{{aluno.email}}</td>

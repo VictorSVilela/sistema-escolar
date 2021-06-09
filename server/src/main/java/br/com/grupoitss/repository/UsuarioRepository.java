@@ -16,6 +16,8 @@ public class UsuarioRepository extends BaseRepository<Usuario>{
     public List<Usuario> listar() {
         Session session = HibernateConfig.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Usuario.class);
-        return (List<Usuario>) criteria.list();
+        List<Usuario> usuarios = criteria.list();
+
+        return usuarios;
     }
 }

@@ -8,19 +8,19 @@ import java.util.Date;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "nome",nullable = false)
     private String nome;
 
     @Column(name = "data_nascimento",nullable = false)
-    private Date dataNascimento;
+    private String dataNascimento;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, Date dataNascimento) {
+    public Usuario(Long id, String nome, String dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -46,11 +46,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

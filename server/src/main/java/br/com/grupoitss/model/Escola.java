@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Escola {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "nome",nullable = false, length = 255)
