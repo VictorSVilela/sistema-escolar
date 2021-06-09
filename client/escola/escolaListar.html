@@ -25,7 +25,7 @@
         <td>{{escola.nome}}</td>
         <td>{{escola.diretor.nome}}</td>
         <td>{{escola.descricao}}</td>
-        <td>{{escola.status}}</td>
+        <td>{{escola.status | ativa}}</td>
         <td>
           <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="escolaEditar({id: escola.id})"></a>
           <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{escola.id}}"></button>
