@@ -7,61 +7,58 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.grupoitss.model.Escola;
+import br.com.grupoitss.service.EscolaService;
 
 @Path("/escolas")
 public class EscolaController {
 
-    private static final Map<Long, Escola> escolas = new HashMap<>();
-    private static Long idGerador = 1L;
+    private static final EscolaService escolaService = new EscolaService();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Escola incluir(Escola escola) {
-        escola.setId(idGerador++);
-        escola.setStatus(true);
-        escolas.put(escola.getId(), escola);
-        return escola;
+    public Response incluir(Escola escola) {
+        if (escola.getDiretor() == null) {
+            return Response.status(400).build();
+        }
+
+        if (escola.getNome().length() > 255) {
+            escola.setNome(escola.getNome().substring(0, 254));
+        }
+
+        if (escola.getDescricao().length() > 300) {
+            escola.setDescricao(escola.getDescricao().substring(0, 299));
+        }
+
+        return Response.status(Response.Status.CREATED).entity(escolaService.inserir(escola)).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response consultar(@PathParam("id") Long id) {
-        if (escolas.containsKey(id)) {
-            Escola escola = escolas.get(id);
-            return Response.ok(escola).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok().entity(escolaService.consultar(id)).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodos() {
-        return Response.ok(escolas.values()).build();
+        return Response.ok().entity(escolaService.listarTodas()).build();
     }
 
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(@PathParam("id") Long id, Escola escola) {
-        if(escolas.containsKey(id)){
-            escola.setId(id);
-            escolas.put(id, escola);
-            return Response.ok(escolas.get(id)).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+    public Response alterar(Escola escola) {
+        return Response.ok().entity(escolaService.editar(escola)).build();
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletar(@PathParam("id") Long id) {
-        if (escolas.containsKey(id)){
-            escolas.remove(id);
-            return Response.ok().build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        escolaService.deletar(id);
+        return Response.ok().build();
     }
 
 

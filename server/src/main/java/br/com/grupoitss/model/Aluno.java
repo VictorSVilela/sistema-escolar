@@ -14,16 +14,24 @@ public class Aluno {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    
+    @Column(name = "email", nullable = false)
     private String email;
 
-    private Integer idade;
+    @Column(name = "idade", nullable = false)
+    private int idade;
 
-    @Column(name = "data_matricula")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "data_matricula", nullable = false)
     private Date dataDaMatricula;
 
+    @Column(name = "sequencia_turma")
     private Long sequencia;
+
+    @Transient
     private String matricula;
+
+    @Transient
+    private String nomeTurma;
 
     public Aluno() {}
 
@@ -93,4 +101,13 @@ public class Aluno {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
+
+    public String getNomeTurma() {
+        return nomeTurma;
+    }
+
+    public void setNomeTurma(String nomeTurma) {
+        this.nomeTurma = nomeTurma;
+    }
+
 }

@@ -1,6 +1,7 @@
 package br.com.grupoitss.controllers;
 
 import br.com.grupoitss.model.Usuario;
+import br.com.grupoitss.service.UsuarioService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,55 +12,41 @@ import java.util.Map;
 @Path("/usuarios")
 public class UsuarioController {
 
-    private static final Map<Long, Usuario> usuarios = new HashMap<>();
-    private static Long idGerador = 1L;
+    private static final UsuarioService usuarioService = new UsuarioService();
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Usuario incluir(Usuario usuario) {
-        usuario.setId(idGerador++);
-        usuarios.put(usuario.getId(), usuario);
-        return usuario;
+    public Response incluir(Usuario usuario) {
+        return Response.status(Response.Status.CREATED).entity(usuarioService.inserir(usuario)).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response consultar(@PathParam("id") Long id) {
-        if(usuarios.containsKey(id)) {
-            Usuario usuario = usuarios.get(id);
-            return Response.ok(usuario).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok().entity(usuarioService.consultar(id)).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodos() {
-        return Response.ok(usuarios.values()).build();
+        return Response.ok().entity(usuarioService.listar()).build();
     }
 
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(@PathParam("id") Long id, Usuario usuario) {
-        if(usuarios.containsKey(id)){
-            usuario.setId(id);
-            usuarios.put(id, usuario);
-            return Response.ok(usuarios.get(id)).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+    public Response alterar(Usuario usuario) {
+        return Response.ok().entity(usuarioService.editar(usuario)).build();
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletar(@PathParam("id") Long id) {
-        if (usuarios.containsKey(id)){
-            usuarios.remove(id);
-            return Response.ok().build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        usuarioService.deletar(id);
+        return Response.ok().build();
     }
 }

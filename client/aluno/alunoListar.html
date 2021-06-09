@@ -5,7 +5,7 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th colspan="4"><h3>Lista de Alunos</h3></th>
+                <th colspan="6"><h3>Lista de Alunos</h3></th>
                 <th>
                     <button title="Cadastrar Aluno" class="btn btn-primary btn-block" ui-sref="alunoIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
                 </th>
@@ -15,6 +15,8 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Idade</th>
+                    <th>Matrícula</th>
+                    <th>Data da matrícula</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -24,6 +26,8 @@
                     <td>{{aluno.nome}}</td>
                     <td>{{aluno.email}}</td>
                     <td>{{aluno.idade}}</td>
+                    <td>{{aluno.matricula}}</td>
+                    <td>{{aluno.dataDaMatricula | date:'dd/MM/yyyy'}}</td>
                     <td>
                         <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar({id: aluno.id})"></a>
                         <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{aluno.id}}"></button>

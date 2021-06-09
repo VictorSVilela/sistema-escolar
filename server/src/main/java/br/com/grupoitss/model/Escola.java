@@ -11,12 +11,17 @@ public class Escola {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nome",nullable = false, length = 255)
     private String nome;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "id_diretor",nullable = false)
     private Usuario diretor;
 
+    @Column(name = "descricao_escola",nullable = false, length = 300)
     private String descricao;
+
+    @Column(name = "status",nullable = false)
     private boolean status;
 
     public Escola() {

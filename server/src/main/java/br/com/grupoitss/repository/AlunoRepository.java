@@ -4,9 +4,11 @@ import br.com.grupoitss.config.HibernateConfig;
 import br.com.grupoitss.model.Aluno;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AlunoRepository extends BaseRepository<Aluno> {
 
