@@ -1,8 +1,7 @@
-<div class="jumbotron text-center">
+<div ng-controller="CursoIncluirController" class="jumbotron text-center">
     <h1 class="text-center">Cadastrar Curso</h1>
     <hr />
     <form name="cursoForm">
-        <pre>{{curso | json}}</pre>
         <div class="form-group container">
             <label class="control-label" for="nome">Nome</label>
             <input type="text" ng-model="curso.nome" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>

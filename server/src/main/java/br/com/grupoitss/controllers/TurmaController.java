@@ -2,6 +2,7 @@ package br.com.grupoitss.controllers;
 
 import br.com.grupoitss.model.Aluno;
 import br.com.grupoitss.model.Turma;
+import br.com.grupoitss.service.TurmaService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,64 +15,42 @@ import java.util.Set;
 @Path("/turmas")
 public class TurmaController {
 
-    private static final Map<Long, Turma> turmas = new HashMap<>();
-    private static Long idGerador = 1L;
+    private static final TurmaService turmaService = new TurmaService();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Turma incluir(Turma turma) {
-        Set<Aluno> alunos = new HashSet<>();
-        for (Long aLong : turma.getAlunosIds()) {
-            Aluno aluno = new Aluno(aLong);
-            alunos.add(aluno);
-        }
-
-        turma.setAlunos(alunos);
-
-        turma.setId(idGerador++);
-        turmas.put(turma.getId(), turma);
-        return turma;
+    public Response incluir(Turma turma) {
+        Turma result = turmaService.inserir(turma);
+        return Response.status(Response.Status.CREATED).entity(new Turma(result.getId())).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response consultar(@PathParam("id") Long id) {
-        if (turmas.containsKey(id)) {
-            Turma turma = turmas.get(id);
-            return Response.ok(turma).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok().entity(turmaService.consultar(id)).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodos() {
-        return Response.ok(turmas.values()).build();
+        return Response.ok().entity(turmaService.listarTodas()).build();
     }
 
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(@PathParam("id") Long id, Turma turma) {
-        if (turmas.containsKey(id)) {
-            turma.setId(id);
-            turmas.put(id, turma);
-            return Response.ok(turmas.get(id)).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+    public Response alterar(Turma turma) {
+        return Response.ok().entity(turmaService.editar(turma)).build();
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletar(@PathParam("id") Long id) {
-        if (turmas.containsKey(id)) {
-            turmas.remove(id);
-            return Response.ok().build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        turmaService.deletar(id);
+        return Response.ok().build();
     }
 
 }

@@ -4,13 +4,13 @@ CursoEditarController.$inject = ['$scope', 'CursoService', '$stateParams'];
 
 function CursoEditarController($scope, CursoService, $stateParams) {
 
-    $scope.editarCurso = editarCurso;
 
     _inicializar();
 
     ////////////////////////////////////////////////
 
     function _inicializar() {
+        $scope.editarCurso = _editarCurso;
         $scope.curso = {};
         _consultar();
     }
@@ -21,7 +21,7 @@ function CursoEditarController($scope, CursoService, $stateParams) {
         });
     }
 
-    function editarCurso(id, curso) {
+    function _editarCurso(id, curso) {
         CursoService.editarCurso(id, curso).then(response => {
             $scope.cursos = response.data;;
         });

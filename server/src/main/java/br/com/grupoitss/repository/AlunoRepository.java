@@ -9,8 +9,11 @@ import org.hibernate.transform.Transformers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class AlunoRepository extends BaseRepository<Aluno> {
+
+    private TurmaRepository turmaRepository = new TurmaRepository();
 
     public AlunoRepository() {
         super(Aluno.class);
@@ -33,7 +36,35 @@ public class AlunoRepository extends BaseRepository<Aluno> {
 
         List<Aluno> alunos = criteria.list();
 
+        alunos.forEach(aluno ->{
+            aluno.setMatricula(turmaRepository.consultarSiglaAluno(aluno.getId()));
+        });
+
         return alunos;
+    }
+
+    public void updateSequencia(List<Long> ids, Long sequencial) {
+        AtomicLong sequencia = new AtomicLong(sequencial);
+
+        this.session = HibernateConfig.getSessionFactory().openSession();
+        session.beginTransaction();
+        ids.forEach(id -> {
+            Aluno alunoPersistent = session.find(this.getTClass(),id);
+            alunoPersistent.setSequencia(sequencia.getAndSet(sequencia.get() + 1));
+        });
+        session.getTransaction().commit();
+        this.session.close();
+    }
+
+    public void removerSequencias(List<Long> ids) {
+        this.session = HibernateConfig.getSessionFactory().openSession();
+        session.beginTransaction();
+        ids.forEach(id -> {
+            Aluno alunoPersistent = session.find(this.getTClass(),id);
+            alunoPersistent.setSequencia(null);
+        });
+        session.getTransaction().commit();
+        this.session.close();
     }
 }
 

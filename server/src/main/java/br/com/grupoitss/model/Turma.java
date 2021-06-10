@@ -8,18 +8,31 @@ import java.util.Set;
 @Table(name = "tb_turma")
 public class Turma {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "nome",nullable = false)
     private String nome;
+
+    @Column(name = "matricula")
     private String matricula;
+
+    @Column(name ="sigla")
     private String sigla;
 
     @ManyToOne
+    @JoinColumn(name = "id_turma_curso",nullable = false)
     private Curso curso;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Aluno.class, fetch = FetchType.LAZY)
+    @JoinTable(name = "TRE_TURMA_ALUNO",
+            joinColumns = @JoinColumn(name = "id_turma"),
+            inverseJoinColumns = @JoinColumn(name = "id_aluno"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"id_aluno"}))
     private Set<Aluno> alunos;
+
+    @Column(name = "sequencia")
+    private Long sequencia;
 
     @Transient
     private List<Long> alunosIds;
@@ -69,6 +82,14 @@ public class Turma {
 
     public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
+    }
+
+    public Long getSequencia() {
+        return sequencia;
+    }
+
+    public void setSequencia(Long sequencia) {
+        this.sequencia = sequencia;
     }
 
     public String getSigla() {
