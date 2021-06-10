@@ -13,6 +13,7 @@ public class UsuarioRepository extends BaseRepository<Usuario>{
         super(Usuario.class);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Usuario> listar() {
         Session session = HibernateConfig.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Usuario.class);

@@ -21,6 +21,7 @@ public class EscolaRepository extends BaseRepository<Escola> {
         super(Escola.class);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Escola> listar() {
         List<Map<String, Object>> result = HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(Escola.class, "bean")

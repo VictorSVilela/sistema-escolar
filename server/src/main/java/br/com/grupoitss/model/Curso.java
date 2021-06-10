@@ -9,21 +9,30 @@ import java.util.Set;
 public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "nome", nullable = false)
     private String nome;
+
+    @Column(name = "sigla", nullable = false,length = 5)
     private String sigla;
 
     @ManyToOne
+    @JoinColumn(name = "id_coordenador", nullable = false)
     private Usuario coordenador;
 
     @ManyToOne
+    @JoinColumn(name = "id_escola",nullable = false)
     private Escola escola;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tb_materia_curso",
+            joinColumns = @JoinColumn(name = "id_curso"),
+            inverseJoinColumns = @JoinColumn(name = "id_materia"))
     private Set<Materia> materias;
 
+    @Column(name = "descricao", nullable = false, length = 2500)
     private String descricao;
 
     @Transient
@@ -40,10 +49,6 @@ public class Curso {
         this.escola = escola;
         this.materias = materias;
         this.descricao = descricao;
-    }
-
-    public Curso(long id) {
-        this.id = id;
     }
 
     public Long getId() {

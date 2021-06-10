@@ -16,6 +16,7 @@ public class AlunoRepository extends BaseRepository<Aluno> {
         super(Aluno.class);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Aluno> listarTodos() {
 
         Criteria criteria = HibernateConfig.getSessionFactory().openSession()
