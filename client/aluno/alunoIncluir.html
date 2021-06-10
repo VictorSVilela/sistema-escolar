@@ -1,8 +1,8 @@
-<div ng-controller="AlunoIncluirController" class="jumbotron text-center">
+<div class="jumbotron">
     <h1 class="text-center">Cadastrar Aluno</h1>
     <hr />
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <form role="form" class="was-validated" name="alunoForm" ng-submit="alunoForm.$valid && incluir()" novalidate>
+    <div class="form-group container">
+        <form role="form" name="alunoForm" class="was-validated" novalidate>
             <form-input type="text" id="nome" label="Nome" ng-model="aluno.nome"></form-input>
             <form-input type="email" id="email" label="Email" ng-model="aluno.email"></form-input>
             <form-input type="number" id="idade" label="Idade" ng-model="aluno.idade"></form-input>

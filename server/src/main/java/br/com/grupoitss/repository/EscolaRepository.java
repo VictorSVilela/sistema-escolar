@@ -36,20 +36,19 @@ public class EscolaRepository extends BaseRepository<Escola> {
 
         List<Escola> escolas = new ArrayList<>();
 
-        result.forEach(row -> escolas.add(escolaBuilder(row)));
+        result.forEach(diretor -> escolas.add(buscarDiretor(diretor)));
 
         return escolas;
     }
 
-    private Escola escolaBuilder(Map<String, Object> row) {
+    private Escola buscarDiretor(Map<String, Object> objectMap) {
         Usuario diretor = new Usuario();
-        diretor.setNome((String) row.get("diretor.nome"));
-
+        diretor.setNome((String) objectMap.get("diretor.nome"));
         Escola escola = new Escola();
-        escola.setId((Long) row.get("id"));
-        escola.setNome((String) row.get("nome"));
-        escola.setDescricao((String) row.get("descricao"));
-        escola.setStatus((boolean) row.get("status"));
+        escola.setId((Long) objectMap.get("id"));
+        escola.setNome((String) objectMap.get("nome"));
+        escola.setDescricao((String) objectMap.get("descricao"));
+        escola.setStatus((boolean) objectMap.get("status"));
         escola.setDiretor(diretor);
         return escola;
     }

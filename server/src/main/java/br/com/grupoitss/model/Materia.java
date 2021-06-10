@@ -7,14 +7,18 @@ import javax.persistence.*;
 public class Materia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_materia",nullable = false)
     private Long id;
 
+    @Column(name = "nome_materia",nullable = false)
     private String nome;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "id_professor",nullable = false)
     private Usuario professor;
 
+    @Column(name = "descricao_materia",nullable = false,length = 2500)
     private String descricao;
 
     public Materia() {

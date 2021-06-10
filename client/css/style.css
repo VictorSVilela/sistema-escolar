@@ -36,6 +36,10 @@ body {
     margin-top: 20px;
 }
 
+.form-control {
+    width: 1000px;
+}
+
 .control-label {
     margin-right: 100%;
 }
