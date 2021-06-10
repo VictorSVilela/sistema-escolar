@@ -1,16 +1,10 @@
 package br.com.grupoitss.controllers;
 
-import br.com.grupoitss.model.Aluno;
 import br.com.grupoitss.model.Turma;
 import br.com.grupoitss.service.TurmaService;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 @Path("/turmas")
 public class TurmaController {

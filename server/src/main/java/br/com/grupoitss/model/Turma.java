@@ -25,7 +25,7 @@ public class Turma {
     private Curso curso;
 
     @ManyToMany(targetEntity = Aluno.class, fetch = FetchType.LAZY)
-    @JoinTable(name = "TRE_TURMA_ALUNO",
+    @JoinTable(name = "tb_turma_aluno",
             joinColumns = @JoinColumn(name = "id_turma"),
             inverseJoinColumns = @JoinColumn(name = "id_aluno"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"id_aluno"}))
