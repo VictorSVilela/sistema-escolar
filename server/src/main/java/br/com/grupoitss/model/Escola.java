@@ -9,6 +9,7 @@ public class Escola {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_escola")
     private Long id;
 
     @Column(name = "nome",nullable = false, length = 255)

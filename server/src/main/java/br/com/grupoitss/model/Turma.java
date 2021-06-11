@@ -9,6 +9,7 @@ import java.util.Set;
 public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_turma")
     private Long id;
 
     @Column(name = "nome",nullable = false)
@@ -21,14 +22,13 @@ public class Turma {
     private String sigla;
 
     @ManyToOne
-    @JoinColumn(name = "id_turma_curso",nullable = false)
+    @JoinColumn(name = "id_curso",nullable = false)
     private Curso curso;
 
     @ManyToMany(targetEntity = Aluno.class, fetch = FetchType.LAZY)
     @JoinTable(name = "tb_turma_aluno",
             joinColumns = @JoinColumn(name = "id_turma"),
-            inverseJoinColumns = @JoinColumn(name = "id_aluno"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"id_aluno"}))
+            inverseJoinColumns = @JoinColumn(name = "id_aluno"))
     private Set<Aluno> alunos;
 
     @Column(name = "sequencia")

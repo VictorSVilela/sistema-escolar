@@ -792,7 +792,7 @@ false YEKT
 false Z
 false Zulu
 </TimeZones>
-      <StartupTime>1623066989</StartupTime>
+      <StartupTime>1623285844</StartupTime>
     </root>
     <database id="2" parent="1" name="postgres">
       <ObjectId>13442</ObjectId>
@@ -812,7 +812,7 @@ false Zulu
 13158||-9223372036854775808|U|G
 13158||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>503</IntrospectionStateNumber>
+      <IntrospectionStateNumber>695</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="4" parent="1" name="pg_execute_server_program">
@@ -877,7 +877,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>504</IntrospectionStateNumber>
+      <IntrospectionStateNumber>696</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="18" parent="3" name="plpgsql">
@@ -978,55 +978,514 @@ false Zulu
       <Type>index</Type>
     </access-method>
     <sequence id="30" parent="17" name="hibernate_sequence">
-      <ObjectId>16402</ObjectId>
+      <ObjectId>24917</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>497</StateNumber>
+      <StateNumber>677</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
     <table id="31" parent="17" name="tb_aluno">
-      <ObjectId>16396</ObjectId>
+      <ObjectId>24919</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>496</StateNumber>
+      <StateNumber>693</StateNumber>
     </table>
-    <column id="32" parent="31" name="id">
+    <table id="32" parent="17" name="tb_curso">
+      <ObjectId>24927</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>686</StateNumber>
+    </table>
+    <table id="33" parent="17" name="tb_escola">
+      <ObjectId>24935</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>687</StateNumber>
+    </table>
+    <table id="34" parent="17" name="tb_materia">
+      <ObjectId>24943</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>689</StateNumber>
+    </table>
+    <table id="35" parent="17" name="tb_materia_curso">
+      <ObjectId>24951</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>690</StateNumber>
+    </table>
+    <table id="36" parent="17" name="tb_turma">
+      <ObjectId>24956</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>692</StateNumber>
+    </table>
+    <table id="37" parent="17" name="tb_turma_aluno">
+      <ObjectId>24964</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>693</StateNumber>
+    </table>
+    <table id="38" parent="17" name="tb_usuario">
+      <ObjectId>24969</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>686</StateNumber>
+    </table>
+    <column id="39" parent="31" name="id_aluno">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>491</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="33" parent="31" name="data_matricula">
+    <column id="40" parent="31" name="data_matricula">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>492</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>678</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="34" parent="31" name="email">
+    <column id="41" parent="31" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>493</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="35" parent="31" name="idade">
+    <column id="42" parent="31" name="idade">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>494</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="36" parent="31" name="nome">
+    <column id="43" parent="31" name="nome">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>495</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="37" parent="31" name="sequencia">
+    <column id="44" parent="31" name="sequencia_turma">
       <Position>6</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>496</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>20</TypeId>
     </column>
+    <index id="45" parent="31" name="tb_aluno_pkey">
+      <ObjectId>24925</ObjectId>
+      <StateNumber>678</StateNumber>
+      <ColNames>id_aluno</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="46" parent="31" name="tb_aluno_pkey">
+      <ObjectId>24926</ObjectId>
+      <StateNumber>678</StateNumber>
+      <ColNames>id_aluno</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_aluno_pkey</UnderlyingIndexName>
+    </key>
+    <column id="47" parent="32" name="id_curso">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>679</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="48" parent="32" name="descricao">
+      <Position>2</Position>
+      <DataType>varchar(2500)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>679</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="49" parent="32" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>679</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="50" parent="32" name="sigla">
+      <Position>4</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>679</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="51" parent="32" name="id_coordenador">
+      <Position>5</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>679</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="52" parent="32" name="id_escola">
+      <Position>6</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>679</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="53" parent="32" name="tb_curso_pkey">
+      <ObjectId>24933</ObjectId>
+      <StateNumber>679</StateNumber>
+      <ColNames>id_curso</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="54" parent="32" name="tb_curso_pkey">
+      <ObjectId>24934</ObjectId>
+      <StateNumber>679</StateNumber>
+      <ColNames>id_curso</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_curso_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="55" parent="32" name="fkdcuy7lhe2crvy2psh0y2d8dv">
+      <ObjectId>24977</ObjectId>
+      <StateNumber>686</StateNumber>
+      <ColNames>id_coordenador</ColNames>
+      <RefTableId>24969</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_usuario</RefTableName>
+      <RefKeyName>tb_usuario_pkey</RefKeyName>
+      <RefColNames>id_usuario</RefColNames>
+    </foreign-key>
+    <foreign-key id="56" parent="32" name="fkftdlo5tdx6wesxrd3khospba2">
+      <ObjectId>24982</ObjectId>
+      <StateNumber>687</StateNumber>
+      <ColNames>id_escola</ColNames>
+      <RefTableId>24935</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_escola</RefTableName>
+      <RefKeyName>tb_escola_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="57" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="58" parent="33" name="descricao_escola">
+      <Position>2</Position>
+      <DataType>varchar(300)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="59" parent="33" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="60" parent="33" name="status">
+      <Position>4</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="61" parent="33" name="id_diretor">
+      <Position>5</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="62" parent="33" name="tb_escola_pkey">
+      <ObjectId>24941</ObjectId>
+      <StateNumber>680</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="63" parent="33" name="tb_escola_pkey">
+      <ObjectId>24942</ObjectId>
+      <StateNumber>680</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_escola_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="64" parent="33" name="fkhdfi317pqjk9vfv7m45ctx2sl">
+      <ObjectId>24987</ObjectId>
+      <StateNumber>688</StateNumber>
+      <ColNames>id_diretor</ColNames>
+      <RefTableId>24969</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_usuario</RefTableName>
+      <RefKeyName>tb_usuario_pkey</RefKeyName>
+      <RefColNames>id_usuario</RefColNames>
+    </foreign-key>
+    <column id="65" parent="34" name="id_materia">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>681</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="66" parent="34" name="descricao_materia">
+      <Position>2</Position>
+      <DataType>varchar(2500)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>681</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="67" parent="34" name="nome_materia">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>681</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="68" parent="34" name="id_professor">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>681</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="69" parent="34" name="tb_materia_pkey">
+      <ObjectId>24949</ObjectId>
+      <StateNumber>681</StateNumber>
+      <ColNames>id_materia</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="70" parent="34" name="tb_materia_pkey">
+      <ObjectId>24950</ObjectId>
+      <StateNumber>681</StateNumber>
+      <ColNames>id_materia</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_materia_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="71" parent="34" name="fk84qk83p9mxwg4vsp6i830j8m5">
+      <ObjectId>24992</ObjectId>
+      <StateNumber>689</StateNumber>
+      <ColNames>id_professor</ColNames>
+      <RefTableId>24969</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_usuario</RefTableName>
+      <RefKeyName>tb_usuario_pkey</RefKeyName>
+      <RefColNames>id_usuario</RefColNames>
+    </foreign-key>
+    <column id="72" parent="35" name="id_curso">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>682</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="73" parent="35" name="id_materia">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>682</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="74" parent="35" name="tb_materia_curso_pkey">
+      <ObjectId>24954</ObjectId>
+      <StateNumber>682</StateNumber>
+      <ColNames>id_curso
+id_materia</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0,0</CollationIds>
+      <ClassIds>3124,3124</ClassIds>
+    </index>
+    <key id="75" parent="35" name="tb_materia_curso_pkey">
+      <ObjectId>24955</ObjectId>
+      <StateNumber>682</StateNumber>
+      <ColNames>id_curso
+id_materia</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_materia_curso_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="76" parent="35" name="fkt40216wwm437e2nto4jppwtsl">
+      <ObjectId>25002</ObjectId>
+      <StateNumber>691</StateNumber>
+      <ColNames>id_curso</ColNames>
+      <RefTableId>24927</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_curso</RefTableName>
+      <RefKeyName>tb_curso_pkey</RefKeyName>
+      <RefColNames>id_curso</RefColNames>
+    </foreign-key>
+    <foreign-key id="77" parent="35" name="fkkxxfhd7uolu54kgoof2tk6xep">
+      <ObjectId>24997</ObjectId>
+      <StateNumber>690</StateNumber>
+      <ColNames>id_materia</ColNames>
+      <RefTableId>24943</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_materia</RefTableName>
+      <RefKeyName>tb_materia_pkey</RefKeyName>
+      <RefColNames>id_materia</RefColNames>
+    </foreign-key>
+    <column id="78" parent="36" name="id_turma">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>683</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="79" parent="36" name="matricula">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>683</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="80" parent="36" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>683</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="81" parent="36" name="sequencia">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>683</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="82" parent="36" name="sigla">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>683</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="83" parent="36" name="id_curso">
+      <Position>6</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>683</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="84" parent="36" name="tb_turma_pkey">
+      <ObjectId>24962</ObjectId>
+      <StateNumber>683</StateNumber>
+      <ColNames>id_turma</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="85" parent="36" name="tb_turma_pkey">
+      <ObjectId>24963</ObjectId>
+      <StateNumber>683</StateNumber>
+      <ColNames>id_turma</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_turma_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="86" parent="36" name="fkmvwfgngfqnomws17d2e55iu81">
+      <ObjectId>25007</ObjectId>
+      <StateNumber>692</StateNumber>
+      <ColNames>id_curso</ColNames>
+      <RefTableId>24927</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_curso</RefTableName>
+      <RefKeyName>tb_curso_pkey</RefKeyName>
+      <RefColNames>id_curso</RefColNames>
+    </foreign-key>
+    <column id="87" parent="37" name="id_turma">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>684</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="88" parent="37" name="id_aluno">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>684</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="89" parent="37" name="tb_turma_aluno_pkey">
+      <ObjectId>24967</ObjectId>
+      <StateNumber>684</StateNumber>
+      <ColNames>id_turma
+id_aluno</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0,0</CollationIds>
+      <ClassIds>3124,3124</ClassIds>
+    </index>
+    <key id="90" parent="37" name="tb_turma_aluno_pkey">
+      <ObjectId>24968</ObjectId>
+      <StateNumber>684</StateNumber>
+      <ColNames>id_turma
+id_aluno</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_turma_aluno_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="91" parent="37" name="fkgr4wwjgrd1xaq4w4wc6hfk56q">
+      <ObjectId>25017</ObjectId>
+      <StateNumber>694</StateNumber>
+      <ColNames>id_turma</ColNames>
+      <RefTableId>24956</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_turma</RefTableName>
+      <RefKeyName>tb_turma_pkey</RefKeyName>
+      <RefColNames>id_turma</RefColNames>
+    </foreign-key>
+    <foreign-key id="92" parent="37" name="fkeqa7tjs19n6dqjhgneyueponu">
+      <ObjectId>25012</ObjectId>
+      <StateNumber>693</StateNumber>
+      <ColNames>id_aluno</ColNames>
+      <RefTableId>24919</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>tb_aluno</RefTableName>
+      <RefKeyName>tb_aluno_pkey</RefKeyName>
+      <RefColNames>id_aluno</RefColNames>
+    </foreign-key>
+    <column id="93" parent="38" name="id_usuario">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>685</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="94" parent="38" name="data_nascimento">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>685</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="95" parent="38" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>685</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="96" parent="38" name="tb_usuario_pkey">
+      <ObjectId>24975</ObjectId>
+      <StateNumber>685</StateNumber>
+      <ColNames>id_usuario</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="97" parent="38" name="tb_usuario_pkey">
+      <ObjectId>24976</ObjectId>
+      <StateNumber>685</StateNumber>
+      <ColNames>id_usuario</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>tb_usuario_pkey</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

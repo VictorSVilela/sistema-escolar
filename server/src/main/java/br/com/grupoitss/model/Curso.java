@@ -1,6 +1,7 @@
 package br.com.grupoitss.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_curso")
     private Long id;
 
     @Column(name = "nome", nullable = false)
@@ -26,7 +28,7 @@ public class Curso {
     @JoinColumn(name = "id_escola",nullable = false)
     private Escola escola;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = Materia.class, fetch = FetchType.LAZY)
     @JoinTable(name = "tb_materia_curso",
             joinColumns = @JoinColumn(name = "id_curso"),
             inverseJoinColumns = @JoinColumn(name = "id_materia"))

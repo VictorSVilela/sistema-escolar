@@ -1,5 +1,6 @@
 package br.com.grupoitss.model;
 
+import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -10,7 +11,7 @@ public abstract class Usuario_ {
 
 	public static volatile SingularAttribute<Usuario, String> nome;
 	public static volatile SingularAttribute<Usuario, Long> id;
-	public static volatile SingularAttribute<Usuario, String> dataNascimento;
+	public static volatile SingularAttribute<Usuario, Date> dataNascimento;
 
 	public static final String NOME = "nome";
 	public static final String ID = "id";
