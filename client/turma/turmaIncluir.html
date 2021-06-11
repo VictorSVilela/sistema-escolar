@@ -22,7 +22,7 @@
         </div>
         <div class="form-group container" ng-controller="AlunoListarController">
             <label class="control-label" for="alunos">Alunos</label>
-            <select class="form-control" name="alunos" id="alunos" ng-model="turma.materiasIds" multiple>
+            <select class="form-control" name="alunos" id="alunos" ng-model="turma.alunosIds" multiple>
                 <option ng-repeat="aluno in alunos" ng-value="aluno.id">{{aluno.nome}}</option>
             </select>
         </div>

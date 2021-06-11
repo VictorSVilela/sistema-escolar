@@ -1,0 +1,39 @@
+<div ng-controller="TurmaEditarController" class="jumbotron text-center">
+    <h1 class="text-center">Cadastrar Turma</h1>
+    <hr />
+    <form name="turmaForm">
+        <div class="form-group container">
+            <label class="control-label" for="id">Id</label>
+            <input type="text" ng-model="turma.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
+        </div>
+        <div class="form-group container">
+            <label class="control-label" for="nome">Nome</label>
+            <input type="text" ng-model="turma.nome" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>
+        </div>
+        <div ng-show="turmaForm.nome.$error.required && turmaForm.nome.$dirty" class="alert alert-danger">
+            Por favor, preencha o campo nome!
+        </div>
+        <div class="form-group container" ng-controller="CursoListarController">
+            <label class="control-label" for="cursos">Curso</label>
+            <select class="form-control" name="cursos" id="cursos" ng-model="turma.curso.id">
+                <option value="">Selecione...</option>
+                <option ng-repeat="curso in cursos" ng-value="curso.id">{{curso.nome}}</option>
+            </select>
+        </div>
+        <div class="form-group container">
+            <label class="control-label" for="matricula">Matrícula</label>
+            <input type="text" ng-model="turma.matricula" class="form-control" name="matricula" id="matricula" placeholder="Matricula" maxlength="5" ng-required="true"/>
+        </div>
+        <div class="form-group container" ng-controller="AlunoListarController">
+            <label class="control-label" for="alunos">Alunos</label>
+            <select class="form-control" name="alunos" id="alunos" ng-model="turma.alunosIds" multiple>
+                <option ng-repeat="aluno in alunos" ng-value="aluno.id">{{aluno.nome}}</option>
+            </select>
+        </div>
+        <hr />
+        <div class="form-group text-center">
+            <button type="button" class="btn btn-default" ui-sref="turmaListar">Cancelar</button>
+            <button ng-click="editarTurma()" class="btn btn-primary" ng-disabled="turmaForm.$invalid" ui-sref="turmaListar">Salvar</button>
+        </div>
+    </form>
+</div>
