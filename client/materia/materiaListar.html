@@ -19,7 +19,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="materia in materias track by materia.id">
+      <tr ng-repeat="materia in materias | orderBy:'id'">
         <td>{{materia.id}}</td>
         <td>{{materia.nome}}</td>
         <td>{{materia.descricao}}</td>

@@ -19,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="turma in turmas track by turma.id">
+            <tr ng-repeat="turma in turmas | orderBy:'id'">
                 <td>{{turma.id}}</td>
                 <td>{{turma.nome}}</td>
                 <td>{{turma.matricula}}</td>

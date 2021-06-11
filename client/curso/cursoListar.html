@@ -22,7 +22,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="curso in cursos track by $index">
+            <tr ng-repeat="curso in cursos | orderBy:'id'">
                 <td>{{curso.id}}</td>
                 <td>{{curso.nome}}</td>
                 <td>{{curso.sigla}}</td>

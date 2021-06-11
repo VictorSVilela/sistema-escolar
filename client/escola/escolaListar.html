@@ -20,7 +20,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="escola in escolas track by escola.id">
+      <tr ng-repeat="escola in escolas | orderBy:'id'">
         <td>{{escola.id}}</td>
         <td>{{escola.nome}}</td>
         <td>{{escola.diretor.nome}}</td>

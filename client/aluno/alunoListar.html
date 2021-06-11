@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="aluno in alunos track by aluno.id">
+                <tr ng-repeat="aluno in alunos | orderBy:'id'">
                     <td>{{aluno.id}}</td>
                     <td>{{aluno.nome}}</td>
                     <td>{{aluno.email}}</td>
