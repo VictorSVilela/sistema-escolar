@@ -2,15 +2,16 @@
     <h1 class="text-center">Cadastrar Aluno</h1>
     <hr />
     <div class="form-group container">
-        <form role="form" name="alunoForm" class="was-validated" novalidate>
-            <form-input type="text" id="nome" label="Nome" ng-model="aluno.nome"></form-input>
-            <form-input type="email" id="email" label="Email" ng-model="aluno.email"></form-input>
-            <form-input type="number" id="idade" label="Idade" ng-model="aluno.idade"></form-input>
+        <form class="was-validated" name="alunoForm" novalidate>
+            <campo-nome type="text" id="nome" label="Nome" ng-model="aluno.nome"></campo-nome>
+            <campo-email type="email" id="email" label="Email" ng-model="aluno.email"></campo-email>
+            <campo-numero type="number" id="idade" label="Idade" ng-model="aluno.idade"></campo-numero>
             <hr />
             <div class="form-group text-center">
                 <button type="button" class="btn btn-default" ui-sref="alunoListar">Cancelar</button>
                 <button ng-click="adicionarAluno(aluno)" class="btn btn-primary" ng-disabled="alunoForm.$invalid" ui-sref="alunoListar">Cadastrar</button>
             </div>
         </form>
+
     </div>
 </div>

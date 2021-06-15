@@ -7,7 +7,7 @@
             <tr>
                 <th colspan="6"><h3>Lista de Alunos</h3></th>
                 <th>
-                    <button title="Cadastrar Aluno" class="btn btn-primary btn-block" ui-sref="alunoIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+                    <button title="Cadastrar Aluno" class="btn btn-primary btn-block" ui-sref="alunoIncluir"><h6><b>Adicionar Aluno</b></h6></button>
                 </th>
             </tr>
                 <tr>
@@ -29,28 +29,8 @@
                     <td>{{aluno.matricula}}</td>
                     <td>{{aluno.dataDaMatricula | date:'dd/MM/yyyy'}}</td>
                     <td>
-                        <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar({id: aluno.id})"></a>
-                        <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{aluno.id}}"></button>
-
-                        <!-- Modal Deletar -->
-                        <div class="modal fade" id="deletarModal{{aluno.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h2 class="modal-title"><b>Deletar Aluno</b></h2>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h4>Deseja realmente deletar o aluno: </h4>
-                                        <br/>
-                                        <h3>{{aluno.nome}}</h3>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" ng-click="deletarAluno(aluno.id)">Deletar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="alunoEditar({id: aluno.id})">Editar</a>
+                        <button type="button" class="btn btn-danger" ng-click="deletarAluno(aluno.id)">Deletar</button>
                     </td>
                 </tr>
             </tbody>

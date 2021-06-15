@@ -22,8 +22,8 @@ function AlunoEditarController($scope, AlunoService, $stateParams) {
     }
 
     function editarAluno(id, aluno) {
-        AlunoService.editarAluno(id, aluno).then(response => {
-            $scope.alunos = response.data;;
-        });
+        AlunoService.editarAluno(id, aluno).then(() => {
+            $state.go('alunoListar');
+        }).catch(() => {});
     }
 }

@@ -4,11 +4,18 @@ body {
 
 .logo {
     text-align: center;
+    margin-top: -180%;
     color: #eee ;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.navline {
+    border-color: #eeeeee;
 }
 
 .navbar-fixed-left {
-    width: 140px;
+    width: 170px;
     position: fixed;
     border-radius: 0;
     height: 100%;
@@ -17,6 +24,7 @@ body {
 .navbar-fixed-left .navbar-nav > li {
     float: none;
     width: 139px;
+    margin-bottom: 20px;
 }
 
 .navbar-fixed-left + .container {
@@ -65,4 +73,8 @@ th {
 textarea {
     resize: none;
     height: 200%;
+}
+
+.was-validated input.ng-invalid.ng-touched {
+    border-color: red;
 }

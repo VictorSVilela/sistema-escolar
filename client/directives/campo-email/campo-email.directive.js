@@ -1,10 +1,10 @@
 angular.module("TreinamentoApp")
-    .directive("formInput", formInput);
+    .directive("campoEmail", campoEmail);
 
 
-function formInput() {
+function campoEmail() {
     return {
-        templateUrl: './directives/form-input/form-input.html',
+        templateUrl: 'directives/campo-email/campo-email.html',
         restrict: 'E',
         scope: {
             id: "@",
