@@ -1,4 +1,5 @@
-angular.module("TreinamentoApp",['ui.router']).config(function ($stateProvider, $urlRouterProvider) {
+angular.module("TreinamentoApp")
+    .config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
 

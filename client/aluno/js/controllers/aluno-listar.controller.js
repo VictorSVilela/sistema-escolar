@@ -21,10 +21,11 @@ function AlunoListarController($scope, AlunoService) {
     }
 
     function deletarAluno(id) {
-        AlunoService.deletarAluno(id).then(response => {
-            $scope.alunos = $scope.alunos.filter(aluno => aluno.id !== id);
-            $(".modal-backdrop").css("display","none");
-        });
+        if (confirm(`Deseja deletar o aluno ${id}`)) {
+            AlunoService.deletarAluno(id).then(response => {
+                $scope.alunos = $scope.alunos.filter(aluno => aluno.id !== id);
+            });
+        }
     }
 
 }

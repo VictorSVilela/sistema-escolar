@@ -21,10 +21,11 @@ function UsuarioListarController($scope, UsuarioService) {
     }
 
     function deletarUsuario(id) {
-        UsuarioService.deletarUsuario(id).then(response => {
-            $scope.usuarios = $scope.usuarios.filter(usuario => usuario.id !== id);
-            $(".modal-backdrop").css("display","none");
-        });
+        if (confirm(`Deseja deletar o usuário ${id}?`)) {
+            UsuarioService.deletarUsuario(id).then(response => {
+                $scope.usuarios = $scope.usuarios.filter(usuario => usuario.id !== id);
+            });
+        }
     }
 
 }

@@ -12,6 +12,8 @@ function UsuarioIncluirController($scope, UsuarioService) {
 
     function _inicializar() {
         listar();
+        $scope.usuario ={};
+        $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/
     }
 
     function listar(){
