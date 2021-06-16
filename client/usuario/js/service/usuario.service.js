@@ -1,6 +1,9 @@
 angular.module("TreinamentoApp").factory("UsuarioService", function ($http) {
     function _getUsuarios() {
-        return $http.get('http://localhost:8080/rest/usuarios');
+        return $http.get('http://localhost:8080/rest/usuarios')
+            .then(response => {
+                return response.data;
+            });
     };
 
     function _incluirUsuario(usuario) {

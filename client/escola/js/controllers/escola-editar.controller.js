@@ -22,8 +22,8 @@ function EscolaEditarController($scope, EscolaService, $stateParams) {
     }
 
     function editarEscola(id, escola) {
-        EscolaService.editarEscola(id, escola).then(response => {
-            $scope.escolas = response.data;
-        });
+        EscolaService.editarEscola(id, escola).then(() => {
+            $state.go('escolaListar');
+        }).catch(()=>{});
     }
 }

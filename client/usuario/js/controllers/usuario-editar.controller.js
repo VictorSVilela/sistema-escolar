@@ -11,7 +11,9 @@ function UsuarioEditarController($scope, UsuarioService, $stateParams) {
     ////////////////////////////////////////////////
 
     function _inicializar() {
+        $scope.editarUsuario = editarUsuario;
         $scope.usuario = {};
+        $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
         _consultar();
     }
 
@@ -22,8 +24,9 @@ function UsuarioEditarController($scope, UsuarioService, $stateParams) {
     }
 
     function editarUsuario(id, usuario) {
-        UsuarioService.editarUsuario(id, usuario).then(response => {
-            $scope.usuarios = response.data;;
-        });
+        UsuarioService.editarUsuario(id, usuario)
+            .then(() => {
+                $state.go('usuarioListar');
+            }).catch(()=>{});
     }
 }

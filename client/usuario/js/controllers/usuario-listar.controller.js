@@ -16,7 +16,7 @@ function UsuarioListarController($scope, UsuarioService) {
 
     function listar(){
         UsuarioService.getUsuarios().then(response => {
-            $scope.usuarios = response.data;
+            $scope.usuarios = response;
         });
     }
 

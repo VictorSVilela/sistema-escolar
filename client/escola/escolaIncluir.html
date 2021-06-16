@@ -1,24 +1,10 @@
 <div ng-controller="EscolaIncluirController" class="jumbotron text-center">
     <h1 class="text-center">Cadastrar Escola</h1>
     <hr />
-    <form name="escolaForm">
-        <div class="form-group container">
-            <label class="control-label" for="nome">Nome</label>
-            <input type="text" ng-model="escola.nome" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>
-        </div>
-        <div ng-show="escolaForm.nome.$error.required && escolaForm.nome.$dirty" class="alert alert-danger">
-            Por favor, preencha o campo nome!
-        </div>
-        <div class="form-group container" ng-controller="UsuarioListarController">
-            <label class="control-label" for="diretores">Diretor</label>
-            <select class="form-control" name="diretores" id="diretores" ng-model="escola.diretor" ng-options="usuario.nome for usuario in usuarios">
-                <option value="">Selecione...</option>
-            </select>
-        </div>
-        <div class="form-group container">
-            <label class="control-label" for="descricao">Descrição</label>
-            <textarea class="form-control" ng-model="escola.descricao" maxlength="300" name="descricao" id="descricao" placeholder="Descrição" rows="3"></textarea>
-        </div>
+    <form class="was-validated" novalidate name="escolaForm">
+        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="escola.nome" ng-pattern="nomePattern"></campo-nome>
+        <campo-select-usuarios id="diretor" label="Diretor" ng-model="escola.diretor.id"></campo-select-usuarios>
+        <campo-textarea id="Descricao" max="300" label="Descrição" ng-model="escola.descricao" ng-pattern="descricaoPattern"></campo-textarea>
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="escolaListar">Cancelar</button>

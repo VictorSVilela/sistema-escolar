@@ -29,10 +29,11 @@ function EscolaListarController($scope, EscolaService) {
     }
 
     function deletarEscola(id) {
-        EscolaService.deletarEscola(id).then(response => {
-            $scope.escolas = $scope.escolas.filter(escola => escola.id !== id);
-            $(".modal-backdrop").css("display","none");
-        });
+        if (confirm(`Deseja deletar a escola: ${id}?`)) {
+            EscolaService.deletarEscola(id).then(response => {
+                $scope.escolas = $scope.escolas.filter(escola => escola.id !== id);
+            });
+        }
     }
 
 }

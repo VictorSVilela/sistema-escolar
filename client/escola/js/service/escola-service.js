@@ -4,15 +4,25 @@ angular.module("TreinamentoApp").factory("EscolaService", function ($http) {
     };
 
     function _incluirEscola(escola) {
-        return $http.post('http://localhost:8080/rest/escolas', escola);
+        return $http.post('http://localhost:8080/rest/escolas', escola)
+            .then(response => {
+                window.alert("Escola cadastrada com sucesso");
+                return response.data;
+            });
     };
 
     function _deletarEscola(id) {
-        return $http.delete(`http://localhost:8080/rest/escolas/${id}`);
+        return $http.delete(`http://localhost:8080/rest/escolas/${id}`)
+            .then(() => {
+                window.alert("Escola deletada com sucesso");
+            });
     };
 
     function _editarEscola(id, escola) {
-        return $http.put(`http://localhost:8080/rest/escolas/${id}`, escola);
+        return $http.put(`http://localhost:8080/rest/escolas/${id}`, escola)
+            .then(() => {
+                window.alert("Escola editada com sucesso");
+            });
     };
 
     function _consultar(id) {
