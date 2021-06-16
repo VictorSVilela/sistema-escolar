@@ -32,6 +32,13 @@ public class TurmaController {
         return Response.ok().entity(turmaService.listarTodas()).build();
     }
 
+    @GET
+    @Path("/sequencia/{sigla}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getMatricula(@QueryParam("id") Long id, @PathParam("sigla") String sigla) {
+        return Response.ok().entity(turmaService.criarMatricula(sigla, id)).build();
+    }
+
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)

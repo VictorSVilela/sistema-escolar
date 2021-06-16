@@ -14,7 +14,6 @@ public class TurmaService {
 
     private static final TurmaRepository turmaRepository = new TurmaRepository();
     private static final AlunoService alunoService = new AlunoService();
-    private static final AlunoRepository alunoRepository = new AlunoRepository();
 
     public Turma inserir(Turma turma) {
         criarSequencia(turma);
