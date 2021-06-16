@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("MateriaEditarController", MateriaEditarController);
 
-MateriaEditarController.$inject = ['$scope', 'MateriaService', '$stateParams'];
+MateriaEditarController.$inject = ['$scope', '$state', 'MateriaService', '$stateParams'];
 
-function MateriaEditarController($scope, MateriaService, $stateParams) {
+function MateriaEditarController($scope, $state, MateriaService, $stateParams) {
 
     $scope.editarMateria = editarMateria;
 
@@ -22,8 +22,8 @@ function MateriaEditarController($scope, MateriaService, $stateParams) {
     }
 
     function editarMateria(id, materia) {
-        MateriaService.editarMateria(id, materia).then(response => {
-            $scope.materias = response.data;;
+        MateriaService.editarMateria(id, materia).then(() => {
+            $state.go('materiaListar');
         });
     }
 }

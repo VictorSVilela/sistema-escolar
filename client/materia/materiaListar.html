@@ -7,7 +7,7 @@
       <tr>
         <th colspan="4"><h3>Lista de Matérias</h3></th>
         <th>
-          <button title="Cadastrar Matéria" class="btn btn-primary btn-block" ui-sref="materiaIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+          <button title="Cadastrar Matéria" class="btn btn-primary btn-block" ui-sref="materiaIncluir"><h6><b>Adicionar Matéria</b></h4></button>
         </th>
       </tr>
       <tr>
@@ -25,28 +25,9 @@
         <td>{{materia.descricao}}</td>
         <td>{{materia.professor.nome}}</td>
         <td>
-          <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="materiaEditar({id: materia.id})"></a>
-          <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{materia.id}}"></button>
+          <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="materiaEditar({id: materia.id})">Editar</a>
+          <button type="button" class="btn btn-danger" ng-click="deletarMateria(materia.id)">Deletar</button>
 
-          <!-- Modal Deletar -->
-          <div class="modal fade" id="deletarModal{{materia.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h2 class="modal-title"><b>Deletar Matéria</b></h2>
-                </div>
-                <div class="modal-body">
-                  <h4>Deseja realmente deletar a matéria: </h4>
-                  <br/>
-                  <h3>{{materia.nome}}</h3>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-danger" ng-click="deletarMateria(materia.id)">Deletar</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </td>
       </tr>
       </tbody>

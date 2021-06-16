@@ -1,28 +1,14 @@
 <div ng-controller="MateriaEditarController" class="jumbotron text-center">
     <h1 class="text-center">Editar Matéria</h1>
     <hr />
-    <form name="materiaForm">
+    <form class="was-validated" novalidate name="materiaForm">
         <div class="form-group container">
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="materia.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
-        <div class="form-group container">
-            <label class="control-label" for="nome">Nome</label>
-            <input type="text" ng-model="materia.nome" class="form-control" name="nome" id="nome" placeholder="Nome" ng-required="true">
-        </div>
-        <div ng-show="materiaForm.nome.$error.required && materiaForm.nome.$dirty" class="alert alert-danger">
-            Por favor, preencha o campo nome!
-        </div>
-        <div class="form-group container">
-            <label class="control-label" for="descricao">Descrição</label>
-            <textarea class="form-control" ng-model="materia.descricao" maxlength="2500" name="descricao" id="descricao" placeholder="Descrição" rows="18"></textarea>
-        </div>
-        <div class="form-group container" ng-controller="UsuarioListarController">
-            <label class="control-label" for="professores">Professor</label>
-            <select class="form-control" name="professores" id="professores" ng-required="true" ng-model="materia.professor" ng-options="usuario.nome for usuario in usuarios track by usuario.id">
-                <option value="">Selecione...</option>
-            </select>
-        </div>
+        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="materia.nome" ng-pattern="nomePattern"></campo-nome>
+        <campo-textarea id="Descricao" max="2500" label="Descrição" ng-model="materia.descricao" ng-pattern="descricaoPattern"></campo-textarea>
+        <campo-select-usuarios id="professor" label="Professor" ng-model="materia.professor.id"></campo-select-usuarios>
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="materiaListar">Cancelar</button>

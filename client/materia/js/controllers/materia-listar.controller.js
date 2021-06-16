@@ -21,10 +21,11 @@ function MateriaListarController($scope, MateriaService) {
     }
 
     function deletarMateria(id) {
-        MateriaService.deletarMateria(id).then(response => {
-            $scope.materias = $scope.materias.filter(materia => materia.id !== id);
-            $(".modal-backdrop").css("display","none");
-        });
+        if (confirm(`Deseja deletar a matéria ${id}?`)) {
+            MateriaService.deletarMateria(id).then(response => {
+                $scope.materias = $scope.materias.filter(materia => materia.id !== id);
+            });
+        }
     }
 
 }
