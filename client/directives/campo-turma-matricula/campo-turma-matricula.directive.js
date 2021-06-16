@@ -43,7 +43,7 @@ function campoTurmaMatricula() {
 
         function _watchNgModel(newValue){
             if (newValue) {
-                TurmaService.gerarMatricula(newValue,$scope.turmaId)
+                TurmaService.criarMatricula(newValue,$scope.turmaId)
                     .then(matricula => {
                         $scope.ngModel = matricula;
                     })
