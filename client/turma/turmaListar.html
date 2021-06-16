@@ -7,7 +7,7 @@
             <tr>
                 <th colspan="4"><h3>Lista de Turmas</h3></th>
                 <th>
-                    <button title="Cadastrar Turma" class="btn btn-primary btn-block" ui-sref="turmaIncluir"><h4 class="glyphicon glyphicon-plus"><b>&nbspNovo</b></h4></button>
+                    <button title="Cadastrar Turma" class="btn btn-primary btn-block" ui-sref="turmaIncluir"><h6><b>Adicionar Turma</b></h6></button>
                 </th>
             </tr>
             <tr>
@@ -25,28 +25,8 @@
                 <td>{{turma.matricula}}</td>
                 <td>{{turma.curso.nome}}</td>
                 <td>
-                    <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="turmaEditar({id: turma.id})"></a>
-                    <button type="button" title="Deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletarModal{{turma.id}}"></button>
-
-                    <!-- Modal Deletar -->
-                    <div class="modal fade" id="deletarModal{{turma.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h2 class="modal-title"><b>Deletar Turma</b></h2>
-                                </div>
-                                <div class="modal-body">
-                                    <h4>Deseja realmente deletar a turma: </h4>
-                                    <br/>
-                                    <h3>{{turma.nome}}</h3>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger" ng-click="deletarTurma(turma.id)">Deletar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a type="button" title="Editar" class="btn btn-info glyphicon glyphicon-pencil" ui-sref="turmaEditar({id: turma.id})">Editar</a>
+                    <button type="button" class="btn btn-danger" ng-click="deletarTurma(turma.id)">Deletar</button>
                 </td>
             </tr>
             </tbody>

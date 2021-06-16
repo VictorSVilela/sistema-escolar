@@ -16,15 +16,16 @@ function TurmaListarController($scope, TurmaService) {
 
     function listar(){
         TurmaService.getTurmas().then(response => {
-            $scope.turmas = response.data;
+            $scope.turmas = response;
         });
     }
 
     function deletarTurma(id) {
-        TurmaService.deletarTurma(id).then(response => {
-            $scope.turmas = $scope.turmas.filter(turma => turma.id !== id);
-            $(".modal-backdrop").css("display","none");
-        });
+        if (confirm(`Deseja deletar a turma ${id}`)) {
+            TurmaService.deletarTurma(id).then(response => {
+                $scope.turmas = $scope.turmas.filter(turma => turma.id !== id);
+            });
+        }
     }
 
 }

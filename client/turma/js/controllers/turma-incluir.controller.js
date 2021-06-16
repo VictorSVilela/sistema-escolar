@@ -10,7 +10,12 @@ function TurmaIncluirController($scope, TurmaService, $state) {
 
     function _inicializar() {
         $scope.incluirTurma = incluirTurma;
-        $scope.turma = {};
+        $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
+        $scope.siglaPattern = /^[A-Z]{1,5}$/;
+        $scope.turma = {
+            curso: {},
+            alunosIds: []
+        };
     }
 
     function incluirTurma() {

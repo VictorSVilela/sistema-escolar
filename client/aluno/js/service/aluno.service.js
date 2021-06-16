@@ -1,6 +1,9 @@
 angular.module("TreinamentoApp").factory("AlunoService", function ($http) {
     function _getAlunos() {
-        return $http.get('http://localhost:8080/rest/alunos');
+        return $http.get('http://localhost:8080/rest/alunos')
+            .then(response => {
+                return response.data;
+            });
     };
 
     function _adicionarAluno(aluno) {

@@ -16,7 +16,7 @@ function AlunoListarController($scope, AlunoService) {
 
     function listar(){
         AlunoService.getALunos().then(response => {
-            $scope.alunos = response.data;
+            $scope.alunos = response;
         });
     }
 
