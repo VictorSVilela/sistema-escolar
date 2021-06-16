@@ -1,6 +1,9 @@
 angular.module("TreinamentoApp").factory("MateriaService", function ($http) {
     function _getMaterias() {
-        return $http.get('http://localhost:8080/rest/materias');
+        return $http.get('http://localhost:8080/rest/materias')
+            .then(response => {
+                return response.data;
+            });
     };
 
     function _incluirMateria(materia) {

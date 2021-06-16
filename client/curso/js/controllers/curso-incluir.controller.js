@@ -10,8 +10,13 @@ function CursoIncluirController($scope, CursoService, $state) {
 
     function _inicializar() {
         $scope.incluirCurso = incluirCurso;
+        $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
+        $scope.descricaoPattern = /^[a-zA-Z](\s|\S|\d){0,2499}$/;
+        $scope.siglaPattern = /^[A-Z]{1,5}$/;
         $scope.curso = {};
         $scope.curso.coordenador={};
+        $scope.curso.escola={};
+        $scope.curso.materiasIds=[];
     }
 
     function incluirCurso() {

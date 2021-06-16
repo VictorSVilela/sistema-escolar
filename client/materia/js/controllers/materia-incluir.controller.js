@@ -12,6 +12,10 @@ function MateriaIncluirController($scope, MateriaService) {
 
     function _inicializar() {
         listar();
+        $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
+        $scope.descricaoPattern = /^[a-zA-Z](\s|\S|\d){0,2499}$/;
+        $scope.materia = {};
+        $scope.materia.professor = {};
     }
 
     function listar(){

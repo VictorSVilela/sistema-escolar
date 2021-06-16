@@ -22,8 +22,8 @@ function CursoEditarController($scope, CursoService, $stateParams) {
     }
 
     function _editarCurso(id, curso) {
-        CursoService.editarCurso(id, curso).then(response => {
-            $scope.cursos = response.data;;
+        CursoService.editarCurso(id, curso).then(() => {
+            $state.go('cursoListar');
         });
     }
 }

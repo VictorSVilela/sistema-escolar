@@ -1,6 +1,9 @@
 angular.module("TreinamentoApp").factory("EscolaService", function ($http) {
     function _getEscolas() {
-        return $http.get('http://localhost:8080/rest/escolas');
+        return $http.get('http://localhost:8080/rest/escolas')
+            .then(response => {
+                return response.data;
+            });
     };
 
     function _incluirEscola(escola) {

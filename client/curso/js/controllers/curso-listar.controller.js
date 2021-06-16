@@ -21,10 +21,11 @@ function CursoListarController($scope, CursoService) {
     }
 
     function deletarCurso(id) {
-        CursoService.deletarCurso(id).then(response => {
-            $scope.cursos = $scope.cursos.filter(curso => curso.id !== id);
-            $(".modal-backdrop").css("display","none");
-        });
+        if (confirm(`Deseja deletar o curso: ${id}?`)) {
+            CursoService.deletarCurso(id).then(response => {
+                $scope.cursos = $scope.cursos.filter(curso => curso.id !== id);
+            });
+        }
     }
 
 }

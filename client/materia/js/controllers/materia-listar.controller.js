@@ -16,7 +16,7 @@ function MateriaListarController($scope, MateriaService) {
 
     function listar(){
         MateriaService.getMaterias().then(response => {
-            $scope.materias = response.data;
+            $scope.materias = response;
         });
     }
 

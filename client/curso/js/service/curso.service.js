@@ -12,11 +12,17 @@ angular.module("TreinamentoApp").factory("CursoService", function ($http) {
     };
 
     function _deletarCurso(id) {
-        return $http.delete(`http://localhost:8080/rest/cursos/${id}`);
+        return $http.delete(`http://localhost:8080/rest/cursos/${id}`)
+            .then(() => {
+                window.alert("Curso deletado com sucesso");
+            });
     };
 
     function _editarCurso(id, curso) {
-        return $http.put(`http://localhost:8080/rest/cursos/${id}`, curso);
+        return $http.put(`http://localhost:8080/rest/cursos/${id}`, curso)
+            .then(() => {
+                window.alert("Curso editado com sucesso");
+            });
     };
 
     function _consultar(id) {

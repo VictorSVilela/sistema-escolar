@@ -1,0 +1,8 @@
+<div class="form-group container">
+    <label for="{{id}}">{{label}}</label>
+    <select multiple id="{{id}}" name="{{id}}" class="form-control" ng-model="ngModel" required>
+        <option ng-repeat="option in options"
+                ng-value="option.id">{{option.nome}}
+        </option>
+    </select>
+</div>

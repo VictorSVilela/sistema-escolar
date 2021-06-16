@@ -1,46 +1,17 @@
 <div ng-controller="CursoEditarController" class="jumbotron text-center">
     <h1 class="text-center">Editar Curso</h1>
     <hr />
-    <form name="cursoForm">
+    <form class="was-validated" novalidate name="cursoForm">
         <div class="form-group container">
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="curso.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
-        <div class="form-group container">
-            <label class="control-label" for="nome">Nome</label>
-            <input type="text" ng-model="curso.nome" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="255" ng-required="true"/>
-        </div>
-        <div ng-show="cursoForm.nome.$error.required && cursoForm.nome.$dirty" class="alert alert-danger">
-            Por favor, preencha o campo nome!
-        </div>
-        <div class="form-group container">
-            <label class="control-label" for="sigla">Sigla</label>
-            <input type="text" ng-model="curso.sigla" class="form-control" name="sigla" id="sigla" placeholder="Sigla" maxlength="5" ng-required="true"/>
-        </div>
-        <div class="form-group container" ng-controller="UsuarioListarController">
-            <label class="control-label" for="coordenadores">Coordenador</label>
-            <select class="form-control" name="coordenadores" id="coordenadores" ng-model="curso.coordenador.id">
-                <option value="">Selecione...</option>
-                <option ng-repeat="usuario in usuarios" ng-value="usuario.id">{{usuario.nome}}</option>
-            </select>
-        </div>
-        <div class="form-group container" ng-controller="EscolaListarController">
-            <label class="control-label" for="escolas">Escola</label>
-            <select class="form-control" name="escolas" id="escolas" ng-model="curso.escola.id">
-                <option value="">Selecione...</option>
-                <option ng-repeat="escola in escolas" ng-value="escola.id">{{escola.nome}}</option>
-            </select>
-        </div>
-        <div class="form-group container" ng-controller="MateriaListarController">
-            <label class="control-label" for="materias">Matérias</label>
-            <select class="form-control" name="materias" id="materias" ng-model="curso.materiasIds" multiple>
-                <option ng-repeat="materia in materias" ng-value="materia.id">{{materia.nome}}</option>
-            </select>
-        </div>
-        <div class="form-group container">
-            <label class="control-label" for="descricao">Descrição</label>
-            <textarea class="form-control" ng-model="curso.descricao" maxlength="2500" name="descricao" id="descricao" placeholder="Descrição" rows="18"></textarea>
-        </div>
+        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern"></campo-nome>
+        <campo-nome type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern"></campo-nome>
+        <campo-select-usuarios id="coordenador" label="Coordenador" ng-model="curso.coordenador.id"></campo-select-usuarios>
+        <campo-select-escola id="escola" label="Escola" ng-model="curso.escola.id"></campo-select-escola>
+        <campo-select-materia id="materia" label="Matérias" ng-model="curso.materiasIds"></campo-select-materia>
+        <campo-textarea type="text" max="2500" id="descricao" label="Descrição" ng-model="curso.descricao" ng-pattern="descricaoPattern"></campo-textarea>
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="cursoListar">Cancelar</button>

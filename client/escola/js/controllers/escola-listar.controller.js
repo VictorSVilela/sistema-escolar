@@ -24,7 +24,7 @@ function EscolaListarController($scope, EscolaService) {
 
     function listar(){
         EscolaService.getEscolas().then(response => {
-            $scope.escolas = response.data;
+            $scope.escolas = response;
         });
     }
 
