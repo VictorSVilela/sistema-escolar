@@ -1,14 +1,13 @@
 <div ng-controller="UsuarioEditarController" class="jumbotron text-center">
     <h1 class="text-center">Editar Usuário</h1>
     <hr />
-    <form name="usuarioForm">
+    <form class="was-validated" name="usuarioForm" novalidate>
         <div class="form-group container">
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="usuario.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
         <campo-nome type="text" id="nome" label="Nome" ng-model="usuario.nome"></campo-nome>
         <campo-nome type="date" id="dataNascimento" label="Data de nascimento" ng-model="usuario.dataNascimento"></campo-nome>
-
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="usuarioListar">Cancelar</button>

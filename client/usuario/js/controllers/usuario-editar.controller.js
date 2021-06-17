@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("UsuarioEditarController", UsuarioEditarController);
 
-UsuarioEditarController.$inject = ['$scope', 'UsuarioService', '$stateParams'];
+UsuarioEditarController.$inject = ['$scope', '$state', 'UsuarioService', '$stateParams'];
 
-function UsuarioEditarController($scope, UsuarioService, $stateParams) {
+function UsuarioEditarController($scope, $state, UsuarioService, $stateParams) {
 
     $scope.editarUsuario = editarUsuario;
 
@@ -20,6 +20,8 @@ function UsuarioEditarController($scope, UsuarioService, $stateParams) {
     function _consultar(){
         UsuarioService.consultar($stateParams.id).then(response => {
             $scope.usuario = response.data;
+        }).catch(()=>{
+            $state.go('usuarioListar');
         });
     }
 

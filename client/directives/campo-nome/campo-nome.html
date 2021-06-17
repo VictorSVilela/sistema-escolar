@@ -1,11 +1,14 @@
 <div class="form-group container">
-        <label for="{{id}}">{{label}}</label>
-        <input type="{{type}}"
-               maxlength="{{max}}"
-               class="form-control"
-               id={{id}}
-               ng-readonly={{leitura}}
-               ng-model="ngModel"
-               ng-pattern="ngPattern" required>
+    <label for="{{id}}">{{label}}</label>
+    <input type="{{type}}"
+           maxlength="{{max}}"
+           class="form-control"
+           id="{{id}}"
+           nome="{{id}}"
+           ng-readonly="ngReadonly"
+           ng-disabled="ngDisabled"
+           ng-model="ngModel"
+           ng-pattern="ngPattern"
+           ng-required="ngRequired">
 
 </div>

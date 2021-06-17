@@ -28,7 +28,7 @@ function campoTurmaMatricula() {
 
     campoTurmaMatriculaController.$inject = ['$scope', 'TurmaService'];
 
-    function campoTurmaMatriculaController($scope,TurmaService){
+    function campoTurmaMatriculaController($scope, TurmaService) {
         $scope.$watch('sigla', _watchNgModel)
 
         _inicializar();
@@ -36,14 +36,14 @@ function campoTurmaMatricula() {
         /////////////////////////////////
 
         function _inicializar() {
-            if(!$scope.turmaId){
-                $scope.turmaId="";
+            if (!$scope.turmaId) {
+                $scope.turmaId = "";
             }
         }
 
-        function _watchNgModel(newValue){
+        function _watchNgModel(newValue) {
             if (newValue) {
-                TurmaService.criarMatricula(newValue,$scope.turmaId)
+                TurmaService.criarMatricula(newValue, $scope.turmaId)
                     .then(matricula => {
                         $scope.ngModel = matricula;
                     })

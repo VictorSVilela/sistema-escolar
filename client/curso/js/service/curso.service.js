@@ -1,6 +1,9 @@
 angular.module("TreinamentoApp").factory("CursoService", function ($http) {
     function _getCursos() {
-        return $http.get('http://localhost:8080/rest/cursos');
+        return $http.get('http://localhost:8080/rest/cursos')
+            .then(response => {
+                return response.data;
+            });
     };
 
     function _incluirCurso(curso) {

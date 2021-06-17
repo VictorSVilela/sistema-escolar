@@ -13,7 +13,10 @@ function campoNome() {
             ngModel: "=",
             max: "@",
             leitura: '=?',
-            ngPattern: "=?"
+            ngPattern: "=?",
+            ngRequired: "=?",
+            ngReadonly: "=?",
+            ngDisabled: "=?"
         },
         link: function (scope) {
             if (scope.max === undefined) {

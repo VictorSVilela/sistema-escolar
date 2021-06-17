@@ -24,11 +24,10 @@ function campoSelectCurso() {
         _inicializar();
 
         function _inicializar() {
-            $scope.defaultOptionText = 'Selecione...'
-
+            $scope.defaultOptionText = 'Selecione...';
             $scope.options = [];
-
-            CursoService.getCursos().then(cursos => {
+            CursoService.getCursos()
+                .then(cursos => {
                 $scope.options = cursos;
             })
         }

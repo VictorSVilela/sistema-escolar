@@ -16,7 +16,7 @@ function CursoListarController($scope, CursoService) {
 
     function listar(){
         CursoService.getCursos().then(response => {
-            $scope.cursos = response.data;
+            $scope.cursos = response;
         });
     }
 
