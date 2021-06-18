@@ -32,8 +32,8 @@ angular.module("TreinamentoApp").factory("TurmaService", function ($http) {
         return $http.get(`http://localhost:8080/rest/turmas/${id}`);
     }
 
-    function _criarMatricula(sigla,id) {
-        return $http.get(`http://localhost:8080/rest/turmas/sequencia/${sigla}?id=${id}`);
+    function _gerarMatricula(cursoId) {
+        return $http.get(`http://localhost:8080/rest/turmas/gerar-matricula/${cursoId}`);
     }
 
     return {
@@ -42,6 +42,6 @@ angular.module("TreinamentoApp").factory("TurmaService", function ($http) {
         deletarTurma: _deletarTurma,
         editarTurma: _editarTurma,
         consultar: _consultar,
-        criarMatricula: _criarMatricula
+        gerarMatricula: _gerarMatricula
     };
 });

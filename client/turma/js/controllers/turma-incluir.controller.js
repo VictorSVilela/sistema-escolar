@@ -4,7 +4,7 @@ TurmaIncluirController.$inject = ['$scope', 'TurmaService', '$state'];
 
 function TurmaIncluirController($scope, TurmaService, $state) {
 
-    $scope.$watch('turma.curso', _watchTurmaCurso);
+    $scope.$watch('turma.curso.id', _watchTurmaCurso);
 
     $scope.incluirTurma = incluirTurma;
 
@@ -15,7 +15,6 @@ function TurmaIncluirController($scope, TurmaService, $state) {
     function _inicializar() {
         $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
         $scope.siglaPattern = /^[A-Z]{1,5}$/;
-
         $scope.turma = {
             curso: {},
             alunosIds: []
@@ -31,7 +30,7 @@ function TurmaIncluirController($scope, TurmaService, $state) {
 
     function _watchTurmaCurso(newValue) {
         if (newValue) {
-            TurmaService.criarMatricula($scope.turma.curso.id).then(response => {
+            TurmaService.gerarMatricula($scope.turma.curso.id).then(response => {
                 $scope.turma.matricula = response.data;
             });
         }

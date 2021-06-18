@@ -6,7 +6,7 @@
          version="3.0">
     
     <listener>
-        <listener-class>br.com.grupoitss.listener.HibernateConfigListener</listener-class>
+        <listener-class>br.com.projeto.listener.HibernateConfigListener</listener-class>
     </listener>
 
     <servlet>
@@ -15,13 +15,13 @@
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
             <param-value>
-                br.com.grupoitss,
+                br.com.projeto,
             </param-value>
         </init-param>
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
             <param-value>
-                br.com.grupoitss.config.JacksonConfig,
+                br.com.projeto.config.JacksonConfig,
                 org.glassfish.jersey.jackson.JacksonFeature
             </param-value>
         </init-param>

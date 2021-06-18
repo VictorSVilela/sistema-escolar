@@ -3,12 +3,13 @@
     <hr />
     <form  class="was-validated" novalidate name="turmaForm">
 
-        <campo-nome type="text" id="nome" label="Nome" ng-model="turma.nome" ng-pattern="nomePattern"></campo-nome>
+        {{turma | json}}
 
-        <campo-select-curso id="curso" label="Curso" ng-model="turma.curso.id" sigla="turma.curso.sigla"></campo-select-curso>
+        <campo-nome type="text" id="nome" label="Nome" ng-model="turma.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
+
+        <campo-select-curso id="curso" label="Curso" ng-model="turma.curso.id"></campo-select-curso>
 
         <campo-nome type="text" id="matricula" label="Matricula" ng-model="turma.matricula" ng-readonly="true" ng-disabled="true"></campo-nome>
-<!--        <campo-turma-matricula type="text" id="matricula" label="Matricula" ng-model="turma.matricula" sigla="turma.curso.sigla"></campo-turma-matricula>-->
 
         <campo-select-alunos id="alunos" label="Alunos" ng-model="turma.alunosIds"></campo-select-alunos>
 
