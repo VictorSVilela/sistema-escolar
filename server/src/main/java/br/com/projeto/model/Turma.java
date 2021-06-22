@@ -18,9 +18,6 @@ public class Turma {
     @Column(name = "matricula")
     private String matricula;
 
-    @Column(name ="sigla")
-    private String sigla;
-
     @ManyToOne
     @JoinColumn(name = "id_curso",nullable = false)
     private Curso curso;
@@ -90,14 +87,6 @@ public class Turma {
 
     public void setSequencia(Long sequencia) {
         this.sequencia = sequencia;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
     }
 
     public List<Long> getAlunosIds() {

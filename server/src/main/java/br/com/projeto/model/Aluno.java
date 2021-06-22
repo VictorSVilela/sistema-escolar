@@ -2,6 +2,7 @@ package br.com.projeto.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name = "tb_aluno")
@@ -99,8 +100,13 @@ public class Aluno {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setMatricula(String sigla) {
+        if(Optional.ofNullable(sigla).isPresent()){
+            this.matricula = String.format("%s - %s",sigla,this.sequencia);
+        }
+        else{
+            this.matricula=null;
+        }
     }
 
     public String getNomeTurma() {

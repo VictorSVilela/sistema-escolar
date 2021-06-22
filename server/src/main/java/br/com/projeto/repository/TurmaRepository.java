@@ -69,29 +69,6 @@ public class TurmaRepository extends BaseRepository<Turma> {
         return result == null ? Optional.empty() : Optional.of(result);
     }
 
-    public Optional<Long> ultimaSequencia(String sigla) {
-        Long result = (Long) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .createAlias("bean.curso", "turmaCurso")
-                .add(Restrictions.eq("turmaCurso.sigla", sigla))
-                .setProjection(Projections.max("bean.sequencia").as("sequencia"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return Optional.ofNullable(result);
-    }
-
-
-    public Long consultarSequencia() {
-        Long result = (Long) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .setProjection(Projections.max("bean.sequencia"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return result;
-    }
-
     public Object[] consultarMaiorSequenciaDaTurmaESiglaDoCurso(Long cursoId) {
         ProjectionList projectionList = Projections.projectionList();
         projectionList.add(Projections.max("bean.sequencia"));

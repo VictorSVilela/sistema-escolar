@@ -6,8 +6,8 @@
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="curso.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
-        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern"></campo-nome>
-        <campo-nome type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern"></campo-nome>
+        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
+        <campo-nome type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern" ng-required="true"></campo-nome>
         <campo-select-usuarios id="coordenador" label="Coordenador" ng-model="curso.coordenador.id"></campo-select-usuarios>
         <campo-select-escola id="escola" label="Escola" ng-model="curso.escola.id"></campo-select-escola>
         <campo-select-materia id="materia" label="Matérias" ng-model="curso.materiasIds"></campo-select-materia>

@@ -5,9 +5,9 @@
         <form class="was-validated"  name="alunoForm" novalidate>
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="aluno.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
-            <campo-nome type="text" id="nome" label="Nome" ng-model="aluno.nome"></campo-nome>
-            <campo-email type="email" id="email" label="Email" ng-model="aluno.email"></campo-email>
-            <campo-numero type="number" id="idade" label="Idade" ng-model="aluno.idade"></campo-numero>
+            <campo-nome type="text" id="nome" label="Nome" ng-model="aluno.nome" ng-required="true"></campo-nome>
+            <campo-email type="email" id="email" label="Email" ng-model="aluno.email" ng-required="true"></campo-email>
+            <campo-numero type="number" id="idade" label="Idade" ng-model="aluno.idade" ng-required="true"></campo-numero>
             <campo-nome-turma type="text" id="turma" label="Turma" ng-model="aluno.nomeTurma"></campo-nome-turma>
             <hr />
             <div class="form-group text-center">

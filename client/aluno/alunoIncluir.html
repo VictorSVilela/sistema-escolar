@@ -3,9 +3,9 @@
     <hr />
     <div class="form-group container">
         <form class="was-validated" name="alunoForm" novalidate>
-            <campo-nome type="text" id="nome" label="Nome" ng-model="aluno.nome"></campo-nome>
-            <campo-email type="email" id="email" label="Email" ng-model="aluno.email"></campo-email>
-            <campo-numero type="number" id="idade" label="Idade" ng-model="aluno.idade"></campo-numero>
+            <campo-nome type="text" id="nome" label="Nome" ng-model="aluno.nome" ng-required="true"></campo-nome>
+            <campo-email type="email" id="email" label="Email" ng-model="aluno.email" ng-required="true"></campo-email>
+            <campo-numero type="number" id="idade" label="Idade" ng-model="aluno.idade" ng-required="true"></campo-numero>
             <hr />
             <div class="form-group text-center">
                 <button type="button" class="btn btn-default" ui-sref="alunoListar">Cancelar</button>

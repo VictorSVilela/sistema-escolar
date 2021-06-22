@@ -21,7 +21,7 @@ public class AlunoRepository extends BaseRepository<Aluno> {
     public List<Aluno> listarTodos() {
 
         Criteria criteria = HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(getTClass(), "bean")
+                .createCriteria(Aluno.class, "bean")
                 .setProjection(Projections.distinct(Projections.projectionList()
                         .add(Projections.property("bean.id").as("id"))
                         .add(Projections.property("bean.nome").as("nome"))
@@ -35,7 +35,7 @@ public class AlunoRepository extends BaseRepository<Aluno> {
         List<Aluno> alunos = criteria.list();
 
         alunos.forEach(aluno ->{
-            aluno.setMatricula(turmaRepository.consultarSiglaAluno(aluno.getId()));
+            aluno.setMatricula(String.valueOf(turmaRepository.consultarMaiorSequenciaDaTurmaESiglaDoCurso(aluno.getId())));
         });
 
         return alunos;
