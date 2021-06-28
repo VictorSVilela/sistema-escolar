@@ -37,7 +37,7 @@ public class UsuarioController {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(Usuario usuario) {
+    public Response alterar(Usuario usuario) throws RegraNegocioException {
         return Response.ok().entity(usuarioService.editar(usuario)).build();
     }
 

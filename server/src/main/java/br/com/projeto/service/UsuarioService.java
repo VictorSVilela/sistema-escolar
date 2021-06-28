@@ -26,7 +26,10 @@ public class UsuarioService {
         return usuarioRepository.listar();
     }
 
-    public Usuario editar(Usuario usuario) {
+    public Usuario editar(Usuario usuario) throws RegraNegocioException {
+        if(usuarioRepository.verificaSeNomeJaCadastradoESeEMesmoNome(usuario.getNome(), usuario.getId()).isPresent()){
+            throw new RegraNegocioException("Já existe um usuário com esse nome!");
+        }
         return usuarioRepository.editar(usuario);
     }
 
