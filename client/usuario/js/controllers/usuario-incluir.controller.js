@@ -26,6 +26,6 @@ function UsuarioIncluirController($scope, UsuarioService) {
         UsuarioService.incluirUsuario(usuario).then(response => {
             $scope.usuarios = response.data;
             listar();
-        });
+        }).catch(()=>{});
     }
 }

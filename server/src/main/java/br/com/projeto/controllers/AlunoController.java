@@ -1,5 +1,6 @@
 package br.com.projeto.controllers;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Aluno;
 import br.com.projeto.service.AlunoService;
 
@@ -15,7 +16,7 @@ public class AlunoController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response adicionar(Aluno aluno) {
+    public Response adicionar(Aluno aluno) throws RegraNegocioException {
         return Response.status(Response.Status.CREATED).entity(alunoService.inserir(aluno)).build();
     }
 
@@ -24,6 +25,13 @@ public class AlunoController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response consultar(@PathParam("id") Long id) {
         return Response.ok().entity(alunoService.consultar(id)).build();
+    }
+
+    @GET
+    @Path("/gerar-matricula/{turmaId}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response gerarMatricula(@PathParam("turmaId") Long turmaId) {
+        return Response.ok().entity(alunoService.consultar(turmaId)).build();
     }
 
     @PUT

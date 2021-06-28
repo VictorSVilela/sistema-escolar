@@ -1,5 +1,6 @@
 package br.com.projeto.service;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Usuario;
 import br.com.projeto.repository.UsuarioRepository;
 
@@ -9,7 +10,10 @@ public class UsuarioService {
 
     private static final UsuarioRepository usuarioRepository= new UsuarioRepository();
 
-    public Usuario inserir (Usuario usuario) {
+    public Usuario inserir (Usuario usuario) throws RegraNegocioException {
+        if (usuarioRepository.verificaSeNomeJaCadastrado(usuario.getNome())){
+            throw new RegraNegocioException("Já existe um usuário cadastrado com esse nome!");
+        }
         return usuarioRepository.salvar(usuario);
     }
 

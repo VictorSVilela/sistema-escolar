@@ -2,7 +2,9 @@ package br.com.projeto.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_aluno")
@@ -13,10 +15,10 @@ public class Aluno {
     @Column(name = "id_aluno")
     private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "idade", nullable = false)
@@ -26,8 +28,11 @@ public class Aluno {
     @Column(name = "data_matricula", nullable = false)
     private Date dataDaMatricula;
 
-    @Column(name = "sequencia_turma")
+    @Column(name = "sequencia")
     private Long sequencia;
+
+    @ManyToMany(mappedBy = "alunos")
+    private Set<Turma> turmas;
 
     @Transient
     private String matricula;
@@ -100,13 +105,8 @@ public class Aluno {
         return matricula;
     }
 
-    public void setMatricula(String sigla) {
-        if(Optional.ofNullable(sigla).isPresent()){
-            this.matricula = String.format("%s - %s",sigla,this.sequencia);
-        }
-        else{
-            this.matricula=null;
-        }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public String getNomeTurma() {
@@ -117,4 +117,11 @@ public class Aluno {
         this.nomeTurma = nomeTurma;
     }
 
+    public Set<Turma> getTurmas() {
+        return turmas;
+    }
+
+    public void setTurmas(Set<Turma> turmas) {
+        this.turmas = turmas;
+    }
 }

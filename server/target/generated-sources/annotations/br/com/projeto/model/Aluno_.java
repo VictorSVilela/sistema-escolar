@@ -2,6 +2,7 @@ package br.com.projeto.model;
 
 import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -11,6 +12,7 @@ public abstract class Aluno_ {
 
 	public static volatile SingularAttribute<Aluno, Integer> idade;
 	public static volatile SingularAttribute<Aluno, Long> sequencia;
+	public static volatile SetAttribute<Aluno, Turma> turmas;
 	public static volatile SingularAttribute<Aluno, String> nome;
 	public static volatile SingularAttribute<Aluno, Long> id;
 	public static volatile SingularAttribute<Aluno, String> email;
@@ -18,6 +20,7 @@ public abstract class Aluno_ {
 
 	public static final String IDADE = "idade";
 	public static final String SEQUENCIA = "sequencia";
+	public static final String TURMAS = "turmas";
 	public static final String NOME = "nome";
 	public static final String ID = "id";
 	public static final String EMAIL = "email";

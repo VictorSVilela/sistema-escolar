@@ -1,5 +1,6 @@
 package br.com.projeto.controllers;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Usuario;
 import br.com.projeto.service.UsuarioService;
 
@@ -16,7 +17,7 @@ public class UsuarioController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response incluir(Usuario usuario) {
+    public Response incluir(Usuario usuario) throws RegraNegocioException {
         return Response.status(Response.Status.CREATED).entity(usuarioService.inserir(usuario)).build();
     }
 

@@ -15,7 +15,6 @@ public class Usuario {
     @Column(name = "nome",nullable = false)
     private String nome;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "data_nascimento",nullable = false)
     private Date dataNascimento;
 
