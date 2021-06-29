@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("TurmaEditarController", TurmaEditarController);
 
-TurmaEditarController.$inject = ['$scope', 'TurmaService', '$stateParams'];
+TurmaEditarController.$inject = ['$scope', 'TurmaService', '$stateParams', '$state'];
 
-function TurmaEditarController($scope, TurmaService, $stateParams) {
+function TurmaEditarController($scope, TurmaService, $stateParams, $state) {
 
 
     _inicializar();

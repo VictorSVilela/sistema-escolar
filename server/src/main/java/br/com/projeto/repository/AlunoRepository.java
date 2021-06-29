@@ -111,5 +111,14 @@ public class AlunoRepository extends BaseRepository<Aluno> {
 
         return count > 0;
     }
+
+    public boolean verificaSeAlunoTemTurma(Long id) {
+        return Optional.ofNullable(HibernateConfig.getSessionFactory().openSession()
+                .createCriteria(this.getTClass(), "bean")
+                .add(Restrictions.eq("bean.id",id))
+                .setProjection(Projections.property("bean.sequencia").as("sequencia"))
+                .setMaxResults(1)
+                .uniqueResult()).isPresent();
+    }
 }
 

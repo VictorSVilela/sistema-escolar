@@ -185,4 +185,26 @@ public class TurmaRepository extends BaseRepository<Turma> {
                 .uniqueResult();
     }
 
+    public boolean verificaSeNomeJaCadastrado(String nome) {
+        Long count = (Long) HibernateConfig.getSessionFactory().openSession()
+                .createCriteria(this.getTClass(), "bean")
+                .add(Restrictions.eq("bean.nome",nome))
+                .setProjection(Projections.count("bean.nome"))
+                .setMaxResults(1)
+                .uniqueResult();
+
+        return count > 0;
+    }
+
+    public Optional<String> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
+        String result = (String) HibernateConfig.getSessionFactory().openSession()
+                .createCriteria(this.getTClass(),"bean")
+                .add(Restrictions.eq("bean.nome",nome))
+                .add(Restrictions.ne("bean.id",id))
+                .setProjection(Projections.property("bean.nome"))
+                .setMaxResults(1)
+                .uniqueResult();
+
+        return Optional.ofNullable(result);
+    }
 }

@@ -1,7 +1,9 @@
 package br.com.projeto.service;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Aluno;
 import br.com.projeto.model.Turma;
+import br.com.projeto.repository.AlunoRepository;
 import br.com.projeto.repository.TurmaRepository;
 
 import java.util.HashSet;
@@ -11,9 +13,19 @@ import java.util.stream.Collectors;
 public class TurmaService {
 
     private static final TurmaRepository turmaRepository = new TurmaRepository();
+    private static final AlunoRepository alunoRepository = new AlunoRepository();
     private static final AlunoService alunoService = new AlunoService();
 
-    public Turma inserir(Turma turma) {
+    public Turma inserir(Turma turma) throws RegraNegocioException {
+        if (turmaRepository.verificaSeNomeJaCadastrado(turma.getNome())){
+            throw new RegraNegocioException("Já existe uma turma cadastrada com esse nome!");
+        }
+
+        for (Long id : turma.getAlunosIds()) {
+            if(alunoRepository.verificaSeAlunoTemTurma(id)){
+                throw new RegraNegocioException("A turma não pode ser cadastrada pois um ou mais alunos estão cadastrados em outras turmas!");
+            }
+        }
         criarSequencia(turma);
         turma.setAlunos(new HashSet<>());
         turma.getAlunosIds().forEach(alunoId -> turma.getAlunos().add(new Aluno(alunoId)));
@@ -45,7 +57,10 @@ public class TurmaService {
         return turmaRepository.listarTodas();
     }
 
-    public Turma editar(Turma turma) {
+    public Turma editar(Turma turma) throws RegraNegocioException {
+        if (turmaRepository.verificaSeNomeJaCadastradoESeEMesmoNome(turma.getNome(),turma.getId()).isPresent()){
+            throw new RegraNegocioException("Já existe uma turma cadastrada com esse nome!");
+        }
 
         if (!turma.getCurso().getId().equals(turmaRepository.consultarCursoDaTurma(turma.getId()))) {
             criarSequencia(turma);
