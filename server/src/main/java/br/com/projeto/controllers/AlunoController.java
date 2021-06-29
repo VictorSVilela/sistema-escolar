@@ -38,7 +38,7 @@ public class AlunoController {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(Aluno aluno) {
+    public Response alterar(Aluno aluno) throws RegraNegocioException {
         return Response.ok().entity(alunoService.editar(aluno)).build();
     }
 

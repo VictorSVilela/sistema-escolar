@@ -36,7 +36,14 @@ public class AlunoService{
         return alunoRepository.listarTodos();
     }
 
-    public Aluno editar(Aluno aluno) {
+    public Aluno editar(Aluno aluno) throws RegraNegocioException {
+        if (alunoRepository.verificaSeNomeJaCadastradoESeEMesmoNome(aluno.getNome(), aluno.getId()).isPresent()) {
+            throw new RegraNegocioException("Já existe um aluno cadastrado com esse nome!");
+        }
+
+        if (alunoRepository.verificaSeEmailJaCadastradoESeEMesmoEmail(aluno.getEmail(), aluno.getId()).isPresent()) {
+            throw new RegraNegocioException("Já existe um aluno cadastrado com esse email!");
+        }
         return alunoRepository.editar(aluno);
     }
 
