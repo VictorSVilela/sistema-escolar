@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("CursoEditarController", CursoEditarController);
 
-CursoEditarController.$inject = ['$scope', 'CursoService', '$stateParams'];
+CursoEditarController.$inject = ['$scope', 'CursoService', '$stateParams', '$state'];
 
-function CursoEditarController($scope, CursoService, $stateParams) {
+function CursoEditarController($scope, CursoService, $stateParams, $state) {
 
 
     _inicializar();

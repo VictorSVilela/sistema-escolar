@@ -23,6 +23,6 @@ function CursoIncluirController($scope, CursoService, $state) {
         CursoService.incluirCurso($scope.curso).then( response => {
             $scope.curso = response;
             $state.go('cursoListar', {id: $scope.curso.id});
-        });
+        }).catch(()=>{});
     }
 }

@@ -1,5 +1,6 @@
 package br.com.projeto.controllers;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Curso;
 import br.com.projeto.service.CursoService;
 
@@ -16,7 +17,7 @@ public class CursoController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response incluir(Curso curso) {
+    public Response incluir(Curso curso) throws RegraNegocioException {
         return Response.status(Response.Status.CREATED).entity(cursoService.inserir(curso)).build();
     }
 
@@ -36,7 +37,7 @@ public class CursoController {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(@PathParam("id") Long id, Curso curso) {
+    public Response alterar(@PathParam("id") Long id, Curso curso) throws RegraNegocioException {
         return Response.ok().entity(cursoService.editar(curso)).build();
 
     }
