@@ -24,6 +24,6 @@ function EscolaIncluirController($scope, EscolaService) {
         EscolaService.incluirEscola(escola).then(response => {
             $scope.escolas = response.data;
             listar();
-        });
+        }).catch(()=>{});
     }
 }

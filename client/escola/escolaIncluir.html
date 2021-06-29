@@ -2,7 +2,7 @@
     <h1 class="text-center">Cadastrar Escola</h1>
     <hr />
     <form class="was-validated" novalidate name="escolaForm">
-        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="escola.nome" ng-pattern="nomePattern"></campo-nome>
+        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="escola.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
         <campo-select-usuarios id="diretor" label="Diretor" ng-model="escola.diretor.id"></campo-select-usuarios>
         <campo-textarea id="Descricao" max="300" label="Descrição" ng-model="escola.descricao" ng-pattern="descricaoPattern"></campo-textarea>
         <hr />

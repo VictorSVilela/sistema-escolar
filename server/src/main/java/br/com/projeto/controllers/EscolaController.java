@@ -4,6 +4,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Escola;
 import br.com.projeto.service.EscolaService;
 
@@ -15,7 +16,7 @@ public class EscolaController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response incluir(Escola escola) {
+    public Response incluir(Escola escola) throws RegraNegocioException {
         if (escola.getDiretor() == null) {
             return Response.status(400).build();
         }
@@ -47,7 +48,7 @@ public class EscolaController {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(Escola escola) {
+    public Response alterar(Escola escola) throws RegraNegocioException {
         return Response.ok().entity(escolaService.editar(escola)).build();
     }
 

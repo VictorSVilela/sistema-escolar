@@ -1,5 +1,6 @@
 package br.com.projeto.service;
 
+import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Escola;
 import br.com.projeto.repository.EscolaRepository;
 
@@ -9,8 +10,11 @@ public class EscolaService {
 
     private static final EscolaRepository escolaRepository= new EscolaRepository();
 
-    public Escola inserir (Escola escola){
+    public Escola inserir (Escola escola) throws RegraNegocioException {
         escola.setStatus(true);
+        if (escolaRepository.verificaSeNomeJaCadastrado(escola.getNome())){
+            throw new RegraNegocioException("Já existe uma escola com esse nome!");
+        }
         return escolaRepository.salvar(escola);
     }
 
@@ -23,7 +27,10 @@ public class EscolaService {
         return escolaRepository.listar();
     }
 
-    public Escola editar(Escola escola) {
+    public Escola editar(Escola escola) throws RegraNegocioException {
+        if(escolaRepository.verificaSeNomeJaCadastradoESeEMesmoNome(escola.getNome(),escola.getId()).isPresent()){
+            throw new RegraNegocioException("Já existe uma escola com esse nome!");
+        }
         return escolaRepository.editar(escola);
     }
 

@@ -18,6 +18,8 @@ function EscolaEditarController($scope, EscolaService, $stateParams) {
     function _consultar(){
         EscolaService.consultar($stateParams.id).then(response => {
             $scope.escola = response.data;
+        }).catch(()=>{
+            $state.go('escolaListar');
         });
     }
 
