@@ -18,12 +18,14 @@ function MateriaEditarController($scope, $state, MateriaService, $stateParams) {
     function _consultar(){
         MateriaService.consultar($stateParams.id).then(response => {
             $scope.materia = response.data;
+        }).catch(()=>{
+            $state.go('materiaListar');
         });
     }
 
     function editarMateria(id, materia) {
         MateriaService.editarMateria(id, materia).then(() => {
             $state.go('materiaListar');
-        });
+        }).catch(()=>{});
     }
 }

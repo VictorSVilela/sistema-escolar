@@ -28,6 +28,6 @@ function MateriaIncluirController($scope, MateriaService) {
         MateriaService.incluirMateria(materia).then(response => {
             $scope.materias = response.data;
             listar();
-        });
+        }).catch(()=>{});
     }
 }
