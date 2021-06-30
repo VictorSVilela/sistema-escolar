@@ -42,6 +42,21 @@ public class CursoRepository extends BaseRepository<Curso> {
         return cursos;
     }
 
+    public Curso obterCursoComMaterias(Long cursoId) {
+        this.session = HibernateConfig.getSessionFactory().openSession();
+        Curso curso = this.session.get(Curso.class, cursoId);
+
+        Optional.ofNullable(curso).ifPresent(elem -> {
+            curso.setMateriasIds(new ArrayList<>());
+            curso.setMaterias(curso.getMaterias());
+            curso.getMaterias().forEach(materia -> curso.getMateriasIds().add(materia.getId()));
+        });
+
+        this.session.close();
+
+        return curso;
+    }
+
     private Curso setCurso(Map<String, Object> objectMap) {
         Curso curso = new Curso();
         Usuario coordenador = new Usuario();
@@ -63,7 +78,7 @@ public class CursoRepository extends BaseRepository<Curso> {
     public boolean verificaSeNomeJaCadastrado(String nome) {
         Long count = (Long) HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome",nome))
+                .add(Restrictions.eq("bean.nome", nome))
                 .setProjection(Projections.count("bean.nome"))
                 .setMaxResults(1)
                 .uniqueResult();
@@ -74,7 +89,7 @@ public class CursoRepository extends BaseRepository<Curso> {
     public boolean verificaSeSiglaJaCadastrada(String sigla) {
         Long count = (Long) HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.sigla",sigla))
+                .add(Restrictions.eq("bean.sigla", sigla))
                 .setProjection(Projections.count("bean.sigla"))
                 .setMaxResults(1)
                 .uniqueResult();
@@ -84,9 +99,9 @@ public class CursoRepository extends BaseRepository<Curso> {
 
     public Optional<String> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
         String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(),"bean")
-                .add(Restrictions.eq("bean.nome",nome))
-                .add(Restrictions.ne("bean.id",id))
+                .createCriteria(this.getTClass(), "bean")
+                .add(Restrictions.eq("bean.nome", nome))
+                .add(Restrictions.ne("bean.id", id))
                 .setProjection(Projections.property("bean.nome"))
                 .setMaxResults(1)
                 .uniqueResult();

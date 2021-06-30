@@ -27,7 +27,7 @@ public class Curso {
     @JoinColumn(name = "id_escola",nullable = false)
     private Escola escola;
 
-    @ManyToMany(targetEntity = Materia.class, fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Materia.class, fetch = FetchType.LAZY)
     @JoinTable(name = "tb_materia_curso",
             joinColumns = @JoinColumn(name = "id_curso"),
             inverseJoinColumns = @JoinColumn(name = "id_materia"))

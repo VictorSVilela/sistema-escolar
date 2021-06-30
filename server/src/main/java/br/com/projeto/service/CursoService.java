@@ -12,6 +12,7 @@ public class CursoService {
 
     private static final CursoRepository cursoRepository = new CursoRepository();
 
+
     public Curso inserir(Curso curso) throws RegraNegocioException {
         if (cursoRepository.verificaSeNomeJaCadastrado(curso.getNome())) {
             throw new RegraNegocioException("Já existe um curso com esse nome!");
@@ -26,8 +27,7 @@ public class CursoService {
     }
 
     public Curso consultar(Long id) {
-        Curso curso = cursoRepository.obter(id);
-        //TODO: consultar a lista de matérias somente com o que eu preciso
+        Curso curso = cursoRepository.obterCursoComMaterias(id);
         return curso;
     }
 

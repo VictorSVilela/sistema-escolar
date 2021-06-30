@@ -69,9 +69,10 @@ public class TurmaService {
         turma.setAlunos(new HashSet<>());
         turma.getAlunosIds().forEach(id -> turma.getAlunos().add(new Aluno(id)));
         Long sequencialDosAlunos = turmaRepository.obterMaiorSequencialDoAlunosDeUmaTurma(turma.getId()).orElse(0L);
-        List<Long> idsAlunosDaTurmaOriginal = turmaRepository.obterIdAlunosDaTurmaOriginal(turma.getId());
-        List<Long> idsParaRemoverSequecia = obterIdsDosAlunosParaRemoverSequencia(idsAlunosDaTurmaOriginal, turma.getAlunosIds());
-        List<Long> idsParaInserirSequencia = obterIdsDosAlunosParaAdicionarSequencia(turma.getAlunosIds(), idsAlunosDaTurmaOriginal);
+        List<Long> idsAlunosDaTurma = turmaRepository.obterIdAlunosDaTurma(turma.getId());
+        verificaSeAlunoTemTurma(idsAlunosDaTurma,turma.getAlunosIds());
+        List<Long> idsParaRemoverSequecia = obterIdsDosAlunosParaRemoverSequencia(idsAlunosDaTurma, turma.getAlunosIds());
+        List<Long> idsParaInserirSequencia = obterIdsDosAlunosParaAdicionarSequencia(turma.getAlunosIds(), idsAlunosDaTurma);
         Turma turmaEditada = turmaRepository.editar(turma);
         alunoService.removerSequencias(idsParaRemoverSequecia);
         alunoService.updateSequencia(idsParaInserirSequencia, sequencialDosAlunos);
@@ -81,7 +82,7 @@ public class TurmaService {
 
 
     public void deletar(Long id) {
-        List<Long> idsAlunosTurma = turmaRepository.obterIdAlunosDaTurmaOriginal(id);
+        List<Long> idsAlunosTurma = turmaRepository.obterIdAlunosDaTurma(id);
         turmaRepository.deletar(id);
         alunoService.removerSequencias(idsAlunosTurma);
     }
@@ -92,5 +93,14 @@ public class TurmaService {
 
     private List<Long> obterIdsDosAlunosParaAdicionarSequencia(List<Long> idsAlunosDaNovaTurma, List<Long> idsAlunosDaTurma) {
         return idsAlunosDaNovaTurma.stream().filter(id -> !idsAlunosDaTurma.contains(id)).collect(Collectors.toList());
+    }
+
+    private void verificaSeAlunoTemTurma(List<Long> idsAlunosDaTurma, List<Long> alunosIds) throws RegraNegocioException {
+        for (Long novoId : alunosIds) {
+            if(alunoRepository.verificaSeAlunoTemTurma(novoId) && !idsAlunosDaTurma.contains(novoId)){
+                throw new RegraNegocioException("A turma não pode ser editada: um ou mais alunos já estão matriculados em outra turma!");
+            }
+
+        }
     }
 }

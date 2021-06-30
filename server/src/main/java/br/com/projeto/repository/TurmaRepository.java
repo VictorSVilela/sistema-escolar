@@ -96,7 +96,7 @@ public class TurmaRepository extends BaseRepository<Turma> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Long> obterIdAlunosDaTurmaOriginal(Long id) {
+    public List<Long> obterIdAlunosDaTurma(Long id) {
         List<Long> result = (List<Long>) HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
                 .createAlias("bean.alunos", "alunos")
