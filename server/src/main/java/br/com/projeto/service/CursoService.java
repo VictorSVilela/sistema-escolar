@@ -27,6 +27,7 @@ public class CursoService {
 
     public Curso consultar(Long id) {
         Curso curso = cursoRepository.obter(id);
+        //TODO: consultar a lista de matérias somente com o que eu preciso
         return curso;
     }
 
