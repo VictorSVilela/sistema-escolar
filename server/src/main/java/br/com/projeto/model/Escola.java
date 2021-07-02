@@ -28,14 +28,6 @@ public class Escola {
     public Escola() {
     }
 
-    public Escola(Long id, String nome, Usuario diretor, String descricao, boolean status) {
-        this.id = id;
-        this.nome = nome;
-        this.diretor = diretor;
-        this.descricao = descricao;
-        this.status = status;
-    }
-
     public Long getId() {
         return id;
     }

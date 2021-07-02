@@ -1,8 +1,7 @@
 package br.com.projeto.service;
 
-import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Aluno;
-import br.com.projeto.model.Curso;
 import br.com.projeto.model.Turma;
 import br.com.projeto.repository.AlunoRepository;
 import br.com.projeto.repository.CursoRepository;
@@ -19,14 +18,14 @@ public class TurmaService {
     private static final CursoRepository cursoRepository = new CursoRepository();
     private static final AlunoService alunoService = new AlunoService();
 
-    public Turma inserir(Turma turma) throws RegraNegocioException {
+    public Turma inserir(Turma turma) throws RegraNegocioHandler {
         if (turmaRepository.verificaSeNomeJaCadastrado(turma.getNome())){
-            throw new RegraNegocioException("Já existe uma turma cadastrada com esse nome!");
+            throw new RegraNegocioHandler("Já existe uma turma cadastrada com esse nome!");
         }
 
         for (Long id : turma.getAlunosIds()) {
             if(alunoRepository.verificaSeAlunoTemTurma(id)){
-                throw new RegraNegocioException("A turma não pode ser cadastrada pois um ou mais alunos estão cadastrados em outras turmas!");
+                throw new RegraNegocioHandler("A turma não pode ser cadastrada pois um ou mais alunos estão cadastrados em outras turmas!");
             }
         }
         criarSequencia(turma);
@@ -67,9 +66,9 @@ public class TurmaService {
         return turmaRepository.listarTodas();
     }
 
-    public Turma editar(Turma turma) throws RegraNegocioException {
-        if (turmaRepository.verificaSeNomeJaCadastradoESeEMesmoNome(turma.getNome(),turma.getId()).isPresent()){
-            throw new RegraNegocioException("Já existe uma turma cadastrada com esse nome!");
+    public Turma editar(Turma turma) throws RegraNegocioHandler {
+        if (turmaRepository.verificaSeNomeJaCadastradoESeEMesmoNome(turma.getNome(),turma.getId())){
+            throw new RegraNegocioHandler("Já existe uma turma cadastrada com esse nome!");
         }
 
         if (!turma.getCurso().getId().equals(turmaRepository.consultarCursoDaTurma(turma.getId()))) {
@@ -105,10 +104,10 @@ public class TurmaService {
         return idsAlunosDaNovaTurma.stream().filter(id -> !idsAlunosDaTurma.contains(id)).collect(Collectors.toList());
     }
 
-    private void verificaSeAlunoTemTurma(List<Long> idsAlunosDaTurma, List<Long> alunosIds) throws RegraNegocioException {
+    private void verificaSeAlunoTemTurma(List<Long> idsAlunosDaTurma, List<Long> alunosIds) throws RegraNegocioHandler {
         for (Long novoId : alunosIds) {
             if(alunoRepository.verificaSeAlunoTemTurma(novoId) && !idsAlunosDaTurma.contains(novoId)){
-                throw new RegraNegocioException("A turma não pode ser editada: um ou mais alunos já estão matriculados em outra turma!");
+                throw new RegraNegocioHandler("A turma não pode ser editada: um ou mais alunos já estão matriculados em outra turma!");
             }
 
         }

@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("MateriaIncluirController", MateriaIncluirController);
 
-MateriaIncluirController.$inject = ['$scope', 'MateriaService'];
+MateriaIncluirController.$inject = ['$scope', 'MateriaService', '$state'];
 
-function MateriaIncluirController($scope, MateriaService) {
+function MateriaIncluirController($scope, MateriaService, $state) {
 
     $scope.incluirMateria = incluirMateria;
 
@@ -11,23 +11,15 @@ function MateriaIncluirController($scope, MateriaService) {
     ////////////////////////////////////////////////
 
     function _inicializar() {
-        listar();
         $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
         $scope.descricaoPattern = /^[a-zA-Z](\s|\S|\d){0,2499}$/;
         $scope.materia = {};
         $scope.materia.professor = {};
     }
 
-    function listar(){
-        MateriaService.getMaterias().then(response => {
-            $scope.materias = response.data;
-        });
-    }
-
     function incluirMateria() {
-        MateriaService.incluirMateria($scope.materia).then(response => {
-            $scope.materias = response.data;
-            listar();
+        MateriaService.incluirMateria($scope.materia).then(() => {
+            $state.go('materiaListar');
         }).catch(()=>{});
     }
 }

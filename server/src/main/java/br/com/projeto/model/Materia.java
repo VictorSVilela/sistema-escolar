@@ -24,13 +24,6 @@ public class Materia {
     public Materia() {
     }
 
-    public Materia(Long id, String nome, Usuario professor, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.professor = professor;
-        this.descricao = descricao;
-    }
-
     public Materia(Long id) {
         this.id = id;
     }

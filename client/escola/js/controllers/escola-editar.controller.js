@@ -1,10 +1,8 @@
 angular.module("TreinamentoApp").controller("EscolaEditarController", EscolaEditarController);
 
-EscolaEditarController.$inject = ['$scope', 'EscolaService', '$stateParams'];
+EscolaEditarController.$inject = ['$scope', 'EscolaService', '$stateParams', '$state'];
 
-function EscolaEditarController($scope, EscolaService, $stateParams) {
-
-    $scope.editarEscola = editarEscola;
+function EscolaEditarController($scope, EscolaService, $stateParams, $state) {
 
     _inicializar();
 
@@ -12,6 +10,7 @@ function EscolaEditarController($scope, EscolaService, $stateParams) {
 
     function _inicializar() {
         $scope.escola = {};
+        $scope.editarEscola = editarEscola;
         _consultar();
     }
 
@@ -23,8 +22,8 @@ function EscolaEditarController($scope, EscolaService, $stateParams) {
         });
     }
 
-    function editarEscola(id, escola) {
-        EscolaService.editarEscola(id, escola).then(() => {
+    function editarEscola() {
+        EscolaService.editarEscola($scope.escola).then(() => {
             $state.go('escolaListar');
         }).catch(()=>{});
     }

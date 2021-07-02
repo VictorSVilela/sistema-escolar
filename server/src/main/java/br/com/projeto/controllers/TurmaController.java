@@ -1,6 +1,6 @@
 package br.com.projeto.controllers;
 
-import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Turma;
 import br.com.projeto.service.TurmaService;
 import javax.ws.rs.*;
@@ -15,7 +15,7 @@ public class TurmaController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response incluir(Turma turma) throws RegraNegocioException {
+    public Response incluir(Turma turma) throws RegraNegocioHandler {
         Turma result = turmaService.inserir(turma);
         return Response.status(Response.Status.CREATED).entity(new Turma(result.getId())).build();
     }
@@ -43,7 +43,7 @@ public class TurmaController {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(Turma turma) throws RegraNegocioException {
+    public Response alterar(Turma turma) throws RegraNegocioHandler {
         return Response.ok().entity(turmaService.editar(turma)).build();
     }
 

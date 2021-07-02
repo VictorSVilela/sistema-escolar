@@ -1,29 +1,21 @@
 angular.module("TreinamentoApp").controller("EscolaIncluirController", EscolaIncluirController);
 
-EscolaIncluirController.$inject = ['$scope', 'EscolaService'];
+EscolaIncluirController.$inject = ['$scope', 'EscolaService', '$state'];
 
-function EscolaIncluirController($scope, EscolaService) {
-
-    $scope.incluirEscola = incluirEscola;
+function EscolaIncluirController($scope, EscolaService, $state) {
 
     _inicializar();
 
     ////////////////////////////////////////////////
 
     function _inicializar() {
-        listar();
+        $scope.escola ={};
+        $scope.incluirEscola = incluirEscola;
     }
 
-    function listar(){
-        EscolaService.getEscolas().then(response => {
-            $scope.escolas = response.data;
-        });
-    }
-
-    function incluirEscola(escola) {
-        EscolaService.incluirEscola(escola).then(response => {
-            $scope.escolas = response.data;
-            listar();
+    function incluirEscola() {
+        EscolaService.incluirEscola($scope.escola).then(() => {
+            $state.go('escolaListar');
         }).catch(()=>{});
     }
 }

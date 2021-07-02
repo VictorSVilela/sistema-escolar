@@ -1,7 +1,7 @@
 package br.com.projeto.service;
 
 import br.com.projeto.config.HibernateConfig;
-import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Aluno;
 import br.com.projeto.model.Turma;
 import br.com.projeto.repository.AlunoRepository;
@@ -23,13 +23,13 @@ public class AlunoService{
     private static final TurmaRepository turmaRepository = new TurmaRepository();
 
 
-    public Object inserir(Aluno aluno) throws RegraNegocioException {
+    public Object inserir(Aluno aluno) throws RegraNegocioHandler {
         if (alunoRepository.verificaSeNomeJaCadastrado(aluno.getNome())) {
-            throw new RegraNegocioException("Já existe um aluno cadastrado com esse nome!");
+            throw new RegraNegocioHandler("Já existe um aluno cadastrado com esse nome!");
         }
 
         if (alunoRepository.verificaSeEmailJaCadastrado(aluno.getEmail())) {
-            throw new RegraNegocioException("Já existe um aluno cadastrado com esse email!");
+            throw new RegraNegocioHandler("Já existe um aluno cadastrado com esse email!");
         }
         aluno.setDataDaMatricula(new Date());
         return alunoRepository.salvar(aluno);
@@ -63,13 +63,13 @@ public class AlunoService{
         return alunoRepository.listarTodos();
     }
 
-    public Aluno editar(Aluno aluno) throws RegraNegocioException {
-        if (alunoRepository.verificaSeNomeJaCadastradoESeEMesmoNome(aluno.getNome(), aluno.getId()).isPresent()) {
-            throw new RegraNegocioException("Já existe um aluno cadastrado com esse nome!");
+    public Aluno editar(Aluno aluno) throws RegraNegocioHandler {
+        if (alunoRepository.verificaSeNomeJaCadastradoESeEMesmoNome(aluno.getNome(), aluno.getId())) {
+            throw new RegraNegocioHandler("Já existe um aluno cadastrado com esse nome!");
         }
 
-        if (alunoRepository.verificaSeEmailJaCadastradoESeEMesmoEmail(aluno.getEmail(), aluno.getId()).isPresent()) {
-            throw new RegraNegocioException("Já existe um aluno cadastrado com esse email!");
+        if (alunoRepository.verificaSeEmailJaCadastradoESeEMesmoEmail(aluno.getEmail(), aluno.getId())) {
+            throw new RegraNegocioHandler("Já existe um aluno cadastrado com esse email!");
         }
 
         return alunoRepository.editar(aluno);

@@ -22,7 +22,7 @@ function MateriaListarController($scope, MateriaService) {
 
     function deletarMateria(id) {
         if (confirm(`Deseja deletar a matéria ${id}?`)) {
-            MateriaService.deletarMateria(id).then(response => {
+            MateriaService.deletarMateria(id).then(() => {
                 $scope.materias = $scope.materias.filter(materia => materia.id !== id);
             });
         }

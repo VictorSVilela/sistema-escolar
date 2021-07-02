@@ -1,4 +1,4 @@
-<div ng-controller="EscolaEditarController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Editar Escola</h1>
     <hr />
     <form class="was-validated" novalidate name="escolaForm">
@@ -19,7 +19,7 @@
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="escolaListar">Cancelar</button>
-            <button ng-click="editarEscola(escola.id, escola)" class="btn btn-primary" ng-disabled="escolaForm.$invalid" ui-sref="escolaListar">Salvar</button>
+            <button ng-click="editarEscola()" class="btn btn-primary" ng-disabled="escolaForm.$invalid">Salvar</button>
         </div>
     </form>
 </div>

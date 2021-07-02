@@ -26,6 +26,6 @@ function TurmaEditarController($scope, TurmaService, $stateParams, $state) {
     function editarTurma() {
         TurmaService.editarTurma($scope.turma).then(()=>{
             $state.go('turmaListar');
-        });
+        }).catch(()=>{});
     }
 }

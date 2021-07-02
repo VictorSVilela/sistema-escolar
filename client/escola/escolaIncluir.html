@@ -1,4 +1,4 @@
-<div ng-controller="EscolaIncluirController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Cadastrar Escola</h1>
     <hr />
     <form class="was-validated" novalidate name="escolaForm">
@@ -8,7 +8,7 @@
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="escolaListar">Cancelar</button>
-            <button ng-click="incluirEscola(escola)" class="btn btn-primary" ng-disabled="escolaForm.$invalid" ui-sref="escolaListar">Cadastrar</button>
+            <button ng-click="incluirEscola()" class="btn btn-primary" ng-disabled="escolaForm.$invalid">Cadastrar</button>
         </div>
     </form>
 </div>

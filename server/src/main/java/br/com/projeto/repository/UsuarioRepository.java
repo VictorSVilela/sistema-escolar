@@ -4,11 +4,8 @@ import br.com.projeto.config.HibernateConfig;
 import br.com.projeto.model.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UsuarioRepository extends BaseRepository<Usuario>{
 
@@ -26,25 +23,10 @@ public class UsuarioRepository extends BaseRepository<Usuario>{
     }
 
     public boolean verificaSeNomeJaCadastrado(String nome) {
-        Long count = (Long) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome",nome))
-                .setProjection(Projections.count("bean.nome"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return count > 0;
+        return validarPropriedadeUnica("nome", nome);
     }
 
-    public Optional<String> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
-        String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(),"bean")
-                .add(Restrictions.eq("bean.nome",nome))
-                .add(Restrictions.ne("bean.id",id))
-                .setProjection(Projections.property("bean.nome"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return Optional.ofNullable(result);
+    public boolean verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
+        return validarPropriedadeUnica("nome", id, nome);
     }
 }

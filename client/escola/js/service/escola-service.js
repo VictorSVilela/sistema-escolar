@@ -21,8 +21,8 @@ angular.module("TreinamentoApp").factory("EscolaService", function ($http) {
             });
     };
 
-    function _editarEscola(id, escola) {
-        return $http.put(`http://localhost:8080/rest/escolas/${id}`, escola)
+    function _editarEscola(escola) {
+        return $http.put(`http://localhost:8080/rest/escolas/${escola.id}`, escola)
             .then(() => {
                 window.alert("Escola editada com sucesso");
             });

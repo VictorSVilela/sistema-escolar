@@ -1,6 +1,6 @@
 package br.com.projeto.controllers;
 
-import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Materia;
 import br.com.projeto.service.MateriaService;
 
@@ -16,7 +16,7 @@ public class MateriaController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response incluir(Materia materia) throws RegraNegocioException {
+    public Response incluir(Materia materia) throws RegraNegocioHandler {
         return Response.status(Response.Status.CREATED).entity(materiaService.inserir(materia)).build();
     }
 
@@ -36,7 +36,7 @@ public class MateriaController {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response alterar(@PathParam("id") Long id, Materia materia) throws RegraNegocioException {
+    public Response alterar(@PathParam("id") Long id, Materia materia) throws RegraNegocioHandler {
         return Response.ok().entity(materiaService.editar(materia)).build();
     }
 

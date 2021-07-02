@@ -1,28 +1,24 @@
 package br.com.projeto.handler;
 
-public class RegraNegocioHandler {
+import br.com.projeto.exceptions.RegraNegocioException;
 
-    private String mensagem;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
-    public RegraNegocioHandler() {
-    }
+@Provider
+public class RegraNegocioHandler extends Exception implements ExceptionMapper<RegraNegocioHandler> {
+
+    public RegraNegocioHandler(){}
 
     public RegraNegocioHandler(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+        super(mensagem);
     }
 
     @Override
-    public String toString() {
-        return "Error{" +
-                "mensagem='" + mensagem + '\'' +
-                '}';
+    public Response toResponse(RegraNegocioHandler regraNegocioHandler) {
+        return Response.status(Response.Status.BAD_REQUEST).entity(new RegraNegocioException(regraNegocioHandler.getMessage())).build();
     }
+
+
 }

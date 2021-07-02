@@ -21,8 +21,8 @@ angular.module("TreinamentoApp").factory("UsuarioService", function ($http) {
             });
     };
 
-    function _editarUsuario(id, usuario) {
-        return $http.put(`http://localhost:8080/rest/usuarios/${id}`, usuario)
+    function _editarUsuario(usuario) {
+        return $http.put(`http://localhost:8080/rest/usuarios/${usuario.id}`, usuario)
             .then(() => {
                 window.alert("Usuário editado com sucesso");
             });

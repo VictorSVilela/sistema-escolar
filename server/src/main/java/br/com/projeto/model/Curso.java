@@ -42,16 +42,6 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(Long id, String nome, String sigla, Usuario coordenador, Escola escola, Set<Materia> materias, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.sigla = sigla;
-        this.coordenador = coordenador;
-        this.escola = escola;
-        this.materias = materias;
-        this.descricao = descricao;
-    }
-
     public Long getId() {
         return id;
     }

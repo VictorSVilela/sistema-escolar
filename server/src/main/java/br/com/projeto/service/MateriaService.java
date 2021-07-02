@@ -1,6 +1,6 @@
 package br.com.projeto.service;
 
-import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Materia;
 import br.com.projeto.repository.MateriaRepository;
 
@@ -10,9 +10,9 @@ public class MateriaService {
 
     private static final MateriaRepository materiaRepository = new MateriaRepository();
 
-    public Materia inserir(Materia materia) throws RegraNegocioException {
+    public Materia inserir(Materia materia) throws RegraNegocioHandler {
         if (materiaRepository.verificaSeNomeJaCadastrado(materia.getNome())){
-            throw new RegraNegocioException("Já existe uma matéria com esse nome!");
+            throw new RegraNegocioHandler("Já existe uma matéria com esse nome!");
         }
         return materiaRepository.salvar(materia);
     }
@@ -26,9 +26,9 @@ public class MateriaService {
         return materiaRepository.listarTodas();
     }
 
-    public Materia editar(Materia materia) throws RegraNegocioException {
-        if(materiaRepository.verificaSeNomeJaCadastradoESeEMesmoNome(materia.getNome(),materia.getId()).isPresent()){
-            throw new RegraNegocioException("Já existe uma matéria com esse nome!");
+    public Materia editar(Materia materia) throws RegraNegocioHandler {
+        if(materiaRepository.verificaSeNomeJaCadastradoESeEMesmoNome(materia.getNome(),materia.getId())){
+            throw new RegraNegocioHandler("Já existe uma matéria com esse nome!");
         }
         return materiaRepository.editar(materia);
     }

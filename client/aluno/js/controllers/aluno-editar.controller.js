@@ -24,6 +24,6 @@ function AlunoEditarController($scope, AlunoService, $stateParams, $state) {
     function editarAluno() {
         AlunoService.editarAluno($scope.aluno).then(() => {
             $state.go('alunoListar');
-        });
+        }).catch(()=>{});
     }
 }

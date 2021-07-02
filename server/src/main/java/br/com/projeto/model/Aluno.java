@@ -2,8 +2,6 @@ package br.com.projeto.model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -44,13 +42,6 @@ public class Aluno {
 
     public Aluno(Long id) {
         this.id = id;
-    }
-
-    public Aluno(Long id, String nome, String email, int idade) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
     }
 
     public Long getId() {

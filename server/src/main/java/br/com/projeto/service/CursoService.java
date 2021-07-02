@@ -1,6 +1,6 @@
 package br.com.projeto.service;
 
-import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Curso;
 import br.com.projeto.model.Materia;
 import br.com.projeto.repository.CursoRepository;
@@ -13,13 +13,13 @@ public class CursoService {
     private static final CursoRepository cursoRepository = new CursoRepository();
 
 
-    public Curso inserir(Curso curso) throws RegraNegocioException {
+    public Curso inserir(Curso curso) throws RegraNegocioHandler {
         if (cursoRepository.verificaSeNomeJaCadastrado(curso.getNome())) {
-            throw new RegraNegocioException("Já existe um curso com esse nome!");
+            throw new RegraNegocioHandler("Já existe um curso com esse nome!");
         }
 
         if (cursoRepository.verificaSeSiglaJaCadastrada(curso.getSigla())) {
-            throw new RegraNegocioException("Já existe um curso com essa sigla!");
+            throw new RegraNegocioHandler("Já existe um curso com essa sigla!");
         }
         curso.setMaterias(new HashSet<>());
         curso.getMateriasIds().forEach(id-> curso.getMaterias().add(new Materia(id)));
@@ -35,13 +35,13 @@ public class CursoService {
         return cursoRepository.listarTodos();
     }
 
-    public Curso editar(Curso curso) throws RegraNegocioException {
+    public Curso editar(Curso curso) throws RegraNegocioHandler {
         if (cursoRepository.verificaSeNomeJaCadastradoESeEMesmoNome(curso.getNome(),curso.getId())) {
-            throw new RegraNegocioException("Já existe um curso com esse nome!");
+            throw new RegraNegocioHandler("Já existe um curso com esse nome!");
         }
 
         if (cursoRepository.verificaSeSiglaJaCadastradaESeEMesmaSigla(curso.getSigla(),curso.getId())) {
-            throw new RegraNegocioException("Já existe um curso com essa sigla!");
+            throw new RegraNegocioHandler("Já existe um curso com essa sigla!");
         }
 
         curso.setMaterias(new HashSet<>());

@@ -16,8 +16,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class AlunoRepository extends BaseRepository<Aluno> {
 
-    private TurmaRepository turmaRepository = new TurmaRepository();
-
     public AlunoRepository() {
         super(Aluno.class);
     }
@@ -107,28 +105,12 @@ public class AlunoRepository extends BaseRepository<Aluno> {
                 .uniqueResult()).isPresent();
     }
 
-    public Optional<Object> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
-        String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome", nome))
-                .add(Restrictions.ne("bean.id", id))
-                .setProjection(Projections.property("bean.nome").as("nome"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return Optional.ofNullable(result);
+    public boolean verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
+        return validarPropriedadeUnica("nome", id, nome);
     }
 
-    public Optional<Object> verificaSeEmailJaCadastradoESeEMesmoEmail(String email, Long id) {
-        String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.email", email))
-                .add(Restrictions.ne("bean.id", id))
-                .setProjection(Projections.property("bean.email").as("email"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return Optional.ofNullable(result);
+    public boolean verificaSeEmailJaCadastradoESeEMesmoEmail(String email, Long id) {
+        return validarPropriedadeUnica("email", id, email);
     }
 }
 

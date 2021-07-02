@@ -25,8 +25,8 @@ function UsuarioEditarController($scope, $state, UsuarioService, $stateParams) {
         });
     }
 
-    function editarUsuario(id, usuario) {
-        UsuarioService.editarUsuario(id, usuario)
+    function editarUsuario() {
+        UsuarioService.editarUsuario($scope.usuario)
             .then(() => {
                 $state.go('usuarioListar');
             }).catch(()=>{});
