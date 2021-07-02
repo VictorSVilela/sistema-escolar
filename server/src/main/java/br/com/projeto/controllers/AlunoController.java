@@ -1,9 +1,11 @@
 package br.com.projeto.controllers;
 
 import br.com.projeto.exceptions.RegraNegocioException;
+import br.com.projeto.handler.RegraNegocioHandler;
 import br.com.projeto.model.Aluno;
 import br.com.projeto.service.AlunoService;
 
+import javax.validation.ConstraintViolationException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,15 +41,20 @@ public class AlunoController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response alterar(Aluno aluno) throws RegraNegocioException {
-        return Response.ok().entity(alunoService.editar(aluno)).build();
+        alunoService.editar(aluno);
+        return Response.ok().build();
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletar(@PathParam("id") Long id) {
-        alunoService.deletar(id);
-        return Response.ok().build();
+       try {
+           alunoService.deletar(id);
+           return Response.ok().build();
+       } catch (Exception exception){
+           return Response.status(500).entity(new RegraNegocioHandler("O aluno não pode ser deletado pois está sendo usado em outro local")).build();
+       }
     }
 
     @GET

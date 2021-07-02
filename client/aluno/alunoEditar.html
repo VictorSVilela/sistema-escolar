@@ -1,18 +1,18 @@
-<div ng-controller="AlunoEditarController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Editar Aluno</h1>
     <hr />
     <div class="form-group container">
         <form class="was-validated"  name="alunoForm" novalidate>
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="aluno.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
-            <campo-nome type="text" id="nome" label="Nome" ng-model="aluno.nome" ng-required="true"></campo-nome>
+            <campo-texto type="text" id="nome" label="Nome" ng-model="aluno.nome" ng-required="true"></campo-texto>
             <campo-email type="email" id="email" label="Email" ng-model="aluno.email" ng-required="true"></campo-email>
             <campo-numero type="number" id="idade" label="Idade" ng-model="aluno.idade" ng-required="true"></campo-numero>
             <campo-nome-turma type="text" id="turma" label="Turma" ng-model="aluno.nomeTurma"></campo-nome-turma>
             <hr />
             <div class="form-group text-center">
                 <button type="button" class="btn btn-default" ui-sref="alunoListar">Cancelar</button>
-                <button ng-click="editarAluno(aluno.id, aluno)" class="btn btn-primary" ng-disabled="alunoForm.$invalid" ui-sref="alunoListar">Salvar</button>
+                <button ng-click="editarAluno()" class="btn btn-primary" ng-disabled="alunoForm.$invalid" ui-sref="alunoListar">Salvar</button>
             </div>
         </form>
     </div>

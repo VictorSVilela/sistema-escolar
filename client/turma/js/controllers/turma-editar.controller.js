@@ -4,13 +4,13 @@ TurmaEditarController.$inject = ['$scope', 'TurmaService', '$stateParams', '$sta
 
 function TurmaEditarController($scope, TurmaService, $stateParams, $state) {
 
+    $scope.editarTurma = editarTurma;
 
     _inicializar();
 
     ////////////////////////////////////////////////
 
     function _inicializar() {
-        $scope.editarTurma = _editarTurma;
         $scope.nomePattern = /^[a-zA-Z](\s|\S|\d){0,254}$/;
         $scope.siglaPattern = /^[A-Z]{1,5}$/;
         $scope.turma = {};
@@ -23,8 +23,8 @@ function TurmaEditarController($scope, TurmaService, $stateParams, $state) {
         });
     }
 
-    function _editarTurma(id, turma) {
-        TurmaService.editarTurma(id, turma).then(()=>{
+    function editarTurma() {
+        TurmaService.editarTurma($scope.turma).then(()=>{
             $state.go('turmaListar');
         });
     }

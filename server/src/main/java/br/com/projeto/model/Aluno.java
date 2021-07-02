@@ -31,7 +31,7 @@ public class Aluno {
     @Column(name = "sequencia")
     private Long sequencia;
 
-    @ManyToMany(mappedBy = "alunos")
+    @ManyToMany(mappedBy = "alunos", fetch = FetchType.LAZY)
     private Set<Turma> turmas;
 
     @Transient

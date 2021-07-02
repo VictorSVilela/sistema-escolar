@@ -1,4 +1,4 @@
-<div ng-controller="CursoEditarController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Editar Curso</h1>
     <hr />
     <form class="was-validated" novalidate name="cursoForm">
@@ -6,8 +6,8 @@
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="curso.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
-        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
-        <campo-nome type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern" ng-required="true"></campo-nome>
+        <campo-texto type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern" ng-required="true"></campo-texto>
+        <campo-texto type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern" ng-required="true"></campo-texto>
         <campo-select-usuarios id="coordenador" label="Coordenador" ng-model="curso.coordenador.id"></campo-select-usuarios>
         <campo-select-escola id="escola" label="Escola" ng-model="curso.escola.id"></campo-select-escola>
         <campo-select-materias id="materias" label="Matérias" ng-model="curso.materiasIds"></campo-select-materias>
@@ -15,7 +15,7 @@
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="cursoListar">Cancelar</button>
-            <button ng-click="editarCurso(curso.id, curso)" class="btn btn-primary" ng-disabled="cursoForm.$invalid" ui-sref="cursoListar">Salvar</button>
+            <button ng-click="editarCurso()" class="btn btn-primary" ng-disabled="cursoForm.$invalid" ui-sref="cursoListar">Salvar</button>
         </div>
     </form>
 </div>

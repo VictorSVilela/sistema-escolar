@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("AlunoEditarController", AlunoEditarController);
 
-AlunoEditarController.$inject = ['$scope', 'AlunoService', '$stateParams'];
+AlunoEditarController.$inject = ['$scope', 'AlunoService', '$stateParams','$state'];
 
-function AlunoEditarController($scope, AlunoService, $stateParams) {
+function AlunoEditarController($scope, AlunoService, $stateParams, $state) {
 
     $scope.editarAluno = editarAluno;
 
@@ -21,9 +21,9 @@ function AlunoEditarController($scope, AlunoService, $stateParams) {
         });
     }
 
-    function editarAluno(id, aluno) {
-        AlunoService.editarAluno(id, aluno).then(() => {
+    function editarAluno() {
+        AlunoService.editarAluno($scope.aluno).then(() => {
             $state.go('alunoListar');
-        }).catch(() => {});
+        });
     }
 }

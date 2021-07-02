@@ -24,9 +24,9 @@ function AlunoListarController($scope, AlunoService) {
 
     function deletarAluno(id) {
         if (confirm(`Deseja deletar o aluno ${id}`)) {
-            AlunoService.deletarAluno(id).then(response => {
+            AlunoService.deletarAluno(id).then(() => {
                 $scope.alunos = $scope.alunos.filter(aluno => aluno.id !== id);
-            });
+            }).catch(()=>{});
         }
     }
 

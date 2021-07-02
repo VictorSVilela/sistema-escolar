@@ -23,8 +23,8 @@ function MateriaEditarController($scope, $state, MateriaService, $stateParams) {
         });
     }
 
-    function editarMateria(id, materia) {
-        MateriaService.editarMateria(id, materia).then(() => {
+    function editarMateria() {
+        MateriaService.editarMateria($scope.materia).then(() => {
             $state.go('materiaListar');
         }).catch(()=>{});
     }

@@ -21,8 +21,8 @@ angular.module("TreinamentoApp").factory("TurmaService", function ($http) {
             });
     }
 
-    function _editarTurma(id, turma) {
-        return $http.put(`http://localhost:8080/rest/turmas/${id}`, turma)
+    function _editarTurma(turma) {
+        return $http.put(`http://localhost:8080/rest/turmas/${turma.id}`, turma)
             .then(() => {
                 window.alert('Turma editada com sucesso');
             });

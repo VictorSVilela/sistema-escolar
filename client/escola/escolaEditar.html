@@ -6,7 +6,7 @@
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="escola.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
-        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="escola.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
+        <campo-texto type="text" max="255" id="nome" label="Nome" ng-model="escola.nome" ng-pattern="nomePattern" ng-required="true"></campo-texto>
         <campo-select-usuarios id="diretor" label="Diretor" ng-model="escola.diretor.id"></campo-select-usuarios>
         <campo-textarea id="Descricao" max="300" label="Descrição" ng-model="escola.descricao" ng-pattern="descricaoPattern"></campo-textarea>
         <div class="form-group container">

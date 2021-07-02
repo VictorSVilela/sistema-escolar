@@ -2,8 +2,8 @@
     <h1 class="text-center">Cadastrar Curso</h1>
     <hr />
     <form class="was-validated" novalidate name="cursoForm">
-        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
-        <campo-nome type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern" ng-required="true"></campo-nome>
+        <campo-texto type="text" max="255" id="nome" label="Nome" ng-model="curso.nome" ng-pattern="nomePattern" ng-required="true"></campo-texto>
+        <campo-texto type="text" max="5" id="sigla" label="Sigla" ng-model="curso.sigla" ng-pattern="siglaPattern" ng-required="true"></campo-texto>
         <campo-select-usuarios id="coordenador" label="Coordenador" ng-model="curso.coordenador.id"></campo-select-usuarios>
         <campo-select-escola id="escola" label="Escola" ng-model="curso.escola.id"></campo-select-escola>
         <campo-select-materia id="materia" label="Matérias" ng-model="curso.materiasIds"></campo-select-materia>

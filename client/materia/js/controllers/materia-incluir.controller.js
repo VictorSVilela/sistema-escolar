@@ -24,8 +24,8 @@ function MateriaIncluirController($scope, MateriaService) {
         });
     }
 
-    function incluirMateria(materia) {
-        MateriaService.incluirMateria(materia).then(response => {
+    function incluirMateria() {
+        MateriaService.incluirMateria($scope.materia).then(response => {
             $scope.materias = response.data;
             listar();
         }).catch(()=>{});

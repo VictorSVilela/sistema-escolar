@@ -36,11 +36,11 @@ public class CursoService {
     }
 
     public Curso editar(Curso curso) throws RegraNegocioException {
-        if (cursoRepository.verificaSeNomeJaCadastradoESeEMesmoNome(curso.getNome(),curso.getId()).isPresent()) {
+        if (cursoRepository.verificaSeNomeJaCadastradoESeEMesmoNome(curso.getNome(),curso.getId())) {
             throw new RegraNegocioException("Já existe um curso com esse nome!");
         }
 
-        if (cursoRepository.verificaSeSiglaJaCadastradaESeEMesmaSigla(curso.getSigla(),curso.getId()).isPresent()) {
+        if (cursoRepository.verificaSeSiglaJaCadastradaESeEMesmaSigla(curso.getSigla(),curso.getId())) {
             throw new RegraNegocioException("Já existe um curso com essa sigla!");
         }
 

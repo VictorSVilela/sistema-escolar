@@ -21,8 +21,8 @@ angular.module("TreinamentoApp").factory("MateriaService", function ($http) {
             });
     };
 
-    function _editarMateria(id, materia) {
-        return $http.put(`http://localhost:8080/rest/materias/${id}`, materia)
+    function _editarMateria(materia) {
+        return $http.put(`http://localhost:8080/rest/materias/${materia.id}`, materia)
             .then(() => {
                 window.alert("Matéria editada com sucesso");
             });

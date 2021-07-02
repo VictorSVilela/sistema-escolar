@@ -1,14 +1,14 @@
-<div ng-controller="MateriaIncluirController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Cadastrar Matéria</h1>
     <hr />
     <form class="was-validated" novalidate name="materiaForm">
-        <campo-nome type="text" max="255" id="nome" label="Nome" ng-model="materia.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
+        <campo-texto type="text" max="255" id="nome" label="Nome" ng-model="materia.nome" ng-pattern="nomePattern" ng-required="true"></campo-texto>
         <campo-textarea id="Descricao" max="2500" label="Descrição" ng-model="materia.descricao" ng-pattern="descricaoPattern"></campo-textarea>
         <campo-select-usuarios id="professor" label="Professor" ng-model="materia.professor.id"></campo-select-usuarios>
         <hr />
         <div class="form-group text-center">
             <button type="button" class="btn btn-default" ui-sref="materiaListar">Cancelar</button>
-            <button ng-click="incluirMateria(materia)" class="btn btn-primary" ng-disabled="materiaForm.$invalid" ui-sref="materiaListar">Cadastrar</button>
+            <button ng-click="incluirMateria()" class="btn btn-primary" ng-disabled="materiaForm.$invalid" ui-sref="materiaListar">Cadastrar</button>
         </div>
     </form>
 </div>

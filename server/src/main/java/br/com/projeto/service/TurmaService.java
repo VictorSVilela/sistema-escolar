@@ -2,8 +2,10 @@ package br.com.projeto.service;
 
 import br.com.projeto.exceptions.RegraNegocioException;
 import br.com.projeto.model.Aluno;
+import br.com.projeto.model.Curso;
 import br.com.projeto.model.Turma;
 import br.com.projeto.repository.AlunoRepository;
+import br.com.projeto.repository.CursoRepository;
 import br.com.projeto.repository.TurmaRepository;
 
 import java.util.HashSet;
@@ -14,6 +16,7 @@ public class TurmaService {
 
     private static final TurmaRepository turmaRepository = new TurmaRepository();
     private static final AlunoRepository alunoRepository = new AlunoRepository();
+    private static final CursoRepository cursoRepository = new CursoRepository();
     private static final AlunoService alunoService = new AlunoService();
 
     public Turma inserir(Turma turma) throws RegraNegocioException {
@@ -43,10 +46,17 @@ public class TurmaService {
     public String criarMatricula(Long cursoId) {
         Object[] sequenciaSiglaCurso = turmaRepository.consultarMaiorSequenciaDaTurmaESiglaDoCurso(cursoId);
 
-        Long sequencia = (Long) sequenciaSiglaCurso[0];
-        String siglaCurso = String.valueOf(sequenciaSiglaCurso[1]);
+        if (sequenciaSiglaCurso == null){
+            Long sequencia = 1l;
+            String siglaCurso = String.valueOf(cursoRepository.consultarSiglaCurso(cursoId));
+            return String.format("%s - %d", siglaCurso, sequencia);
+        }else {
+            Long sequencia = (Long) sequenciaSiglaCurso[0];
+            String siglaCurso = String.valueOf(sequenciaSiglaCurso[1]);
+            return String.format("%s - %d", siglaCurso, ++sequencia);
+        }
 
-        return String.format("%s - %d", siglaCurso, ++sequencia);
+
     }
 
     public Turma consultar(Long id) {

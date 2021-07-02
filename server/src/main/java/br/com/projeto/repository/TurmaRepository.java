@@ -165,16 +165,6 @@ public class TurmaRepository extends BaseRepository<Turma> {
 
     }
 
-    public String consultarSiglaAluno(Long id) {
-        return (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .createAlias("bean.alunos", "alunos")
-                .add(Restrictions.eq("alunos.id", id))
-                .setProjection(Projections.property("bean.sigla"))
-                .setMaxResults(1)
-                .uniqueResult();
-    }
-
     public String consultarNomeDaTurma(Long id) {
         return (String) HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
@@ -198,9 +188,9 @@ public class TurmaRepository extends BaseRepository<Turma> {
 
     public Optional<String> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
         String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(),"bean")
-                .add(Restrictions.eq("bean.nome",nome))
-                .add(Restrictions.ne("bean.id",id))
+                .createCriteria(Turma.class, "bean")
+                .add(Restrictions.eq("bean.nome", nome))
+                .add(Restrictions.ne("bean.id", id))
                 .setProjection(Projections.property("bean.nome"))
                 .setMaxResults(1)
                 .uniqueResult();

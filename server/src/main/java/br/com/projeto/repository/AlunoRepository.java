@@ -46,12 +46,12 @@ public class AlunoRepository extends BaseRepository<Aluno> {
         return alunos;
     }
 
-    private String gerarMatriculaAluno(Aluno aluno){
+    private String gerarMatriculaAluno(Aluno aluno) {
         Turma turma = consultarTurmaDoAluno(aluno.getId());
-        return turma.getMatricula() + " - " + aluno.getSequencia();
+        return turma != null ? turma.getMatricula() + " - " + aluno.getSequencia() : "";
     }
 
-    private Turma consultarTurmaDoAluno(Long alunoId){
+    private Turma consultarTurmaDoAluno(Long alunoId) {
         Criteria criteria = HibernateConfig.getSessionFactory().openSession().createCriteria(Turma.class, "bean");
         criteria.createAlias("bean.alunos", "alunos");
 
@@ -72,7 +72,7 @@ public class AlunoRepository extends BaseRepository<Aluno> {
         this.session = HibernateConfig.getSessionFactory().openSession();
         session.beginTransaction();
         ids.forEach(id -> {
-            Aluno alunoPersistent = session.find(this.getTClass(),id);
+            Aluno alunoPersistent = session.find(this.getTClass(), id);
             alunoPersistent.setSequencia(sequencia.getAndSet(sequencia.get() + 1));
         });
         session.getTransaction().commit();
@@ -83,7 +83,7 @@ public class AlunoRepository extends BaseRepository<Aluno> {
         this.session = HibernateConfig.getSessionFactory().openSession();
         session.beginTransaction();
         ids.forEach(id -> {
-            Aluno alunoPersistent = session.find(this.getTClass(),id);
+            Aluno alunoPersistent = session.find(this.getTClass(), id);
             alunoPersistent.setSequencia(null);
         });
         session.getTransaction().commit();
@@ -91,31 +91,17 @@ public class AlunoRepository extends BaseRepository<Aluno> {
     }
 
     public boolean verificaSeNomeJaCadastrado(String nome) {
-        Long count = (Long) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome",nome))
-                .setProjection(Projections.count("bean.nome"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return count > 0;
+        return validarPropriedadeUnica("nome", nome);
     }
 
     public boolean verificaSeEmailJaCadastrado(String email) {
-        Long count = (Long)  HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.email",email))
-                .setProjection(Projections.property("bean.email").as("email"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return count > 0;
+        return validarPropriedadeUnica("email", email);
     }
 
     public boolean verificaSeAlunoTemTurma(Long id) {
         return Optional.ofNullable(HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.id",id))
+                .add(Restrictions.eq("bean.id", id))
                 .setProjection(Projections.property("bean.sequencia").as("sequencia"))
                 .setMaxResults(1)
                 .uniqueResult()).isPresent();
@@ -124,8 +110,8 @@ public class AlunoRepository extends BaseRepository<Aluno> {
     public Optional<Object> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
         String result = (String) HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome",nome))
-                .add(Restrictions.ne("bean.id",id))
+                .add(Restrictions.eq("bean.nome", nome))
+                .add(Restrictions.ne("bean.id", id))
                 .setProjection(Projections.property("bean.nome").as("nome"))
                 .setMaxResults(1)
                 .uniqueResult();
@@ -136,8 +122,8 @@ public class AlunoRepository extends BaseRepository<Aluno> {
     public Optional<Object> verificaSeEmailJaCadastradoESeEMesmoEmail(String email, Long id) {
         String result = (String) HibernateConfig.getSessionFactory().openSession()
                 .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.email",email))
-                .add(Restrictions.ne("bean.id",id))
+                .add(Restrictions.eq("bean.email", email))
+                .add(Restrictions.ne("bean.id", id))
                 .setProjection(Projections.property("bean.email").as("email"))
                 .setMaxResults(1)
                 .uniqueResult();

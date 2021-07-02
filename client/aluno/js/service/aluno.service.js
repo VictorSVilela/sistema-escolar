@@ -21,8 +21,8 @@ angular.module("TreinamentoApp").factory("AlunoService", function ($http) {
             });
     };
 
-    function _editarAluno(id, aluno) {
-        return $http.put(`http://localhost:8080/rest/alunos/${id}`, aluno)
+    function _editarAluno(aluno) {
+        return $http.put(`http://localhost:8080/rest/alunos/${aluno.id}`, aluno)
             .then(() => {
                 window.alert("Aluno editado com sucesso");
             });

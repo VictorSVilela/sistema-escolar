@@ -1,10 +1,10 @@
 angular.module("TreinamentoApp")
-    .directive("campoNome", campoNome);
+    .directive("campoTexto", campoNome);
 
 
 function campoNome() {
     return {
-        templateUrl: 'directives/campo-nome/campo-nome.html',
+        templateUrl: 'directives/campo-texto/campo-texto.html',
         restrict: 'E',
         scope: {
             id: "@",

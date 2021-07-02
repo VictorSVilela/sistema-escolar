@@ -25,7 +25,7 @@ function TurmaIncluirController($scope, TurmaService, $state) {
         TurmaService.incluirTurma($scope.turma).then(response => {
             $scope.turma = response;
             $state.go('turmaListar', {id: $scope.turma.id});
-        });
+        }).catch(()=>{});
     }
 
     function _watchTurmaCurso(newValue) {

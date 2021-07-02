@@ -1,4 +1,4 @@
-<div ng-controller="TurmaEditarController" class="jumbotron text-center">
+<div class="jumbotron text-center">
     <h1 class="text-center">Editar Turma</h1>
     <hr />
     <form class="was-validated" novalidate name="turmaForm">
@@ -6,9 +6,9 @@
             <label class="control-label" for="id">Id</label>
             <input type="text" ng-model="turma.id" class="form-control" name="id" id="id" placeholder="ID" ng-disabled="true">
         </div>
-        <campo-nome type="text" id="Nome" label="Nome" ng-model="turma.nome" ng-pattern="nomePattern" ng-required="true"></campo-nome>
+        <campo-texto type="text" id="Nome" label="Nome" ng-model="turma.nome" ng-pattern="nomePattern" ng-required="true"></campo-texto>
         <campo-select-curso id="curso" label="Curso" ng-model="turma.curso.id"></campo-select-curso>
-        <campo-nome type="text" id="matricula" label="Matricula" ng-model="turma.matricula" ng-readonly="true" ng-disabled="true"></campo-nome>
+        <campo-texto type="text" id="matricula" label="Matricula" ng-model="turma.matricula" ng-readonly="true" ng-disabled="true"></campo-texto>
         <campo-select-alunos id="alunos" label="Alunos" ng-model="turma.alunosIds"></campo-select-alunos>
 
         <hr />

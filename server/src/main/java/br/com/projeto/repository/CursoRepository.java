@@ -46,7 +46,7 @@ public class CursoRepository extends BaseRepository<Curso> {
         this.session = HibernateConfig.getSessionFactory().openSession();
         Curso curso = this.session.get(Curso.class, cursoId);
 
-        Optional.ofNullable(curso).ifPresent(elem -> {
+        Optional.ofNullable(curso).ifPresent(materias -> {
             curso.setMateriasIds(new ArrayList<>());
             curso.setMaterias(curso.getMaterias());
             curso.getMaterias().forEach(materia -> curso.getMateriasIds().add(materia.getId()));
@@ -76,48 +76,29 @@ public class CursoRepository extends BaseRepository<Curso> {
     }
 
     public boolean verificaSeNomeJaCadastrado(String nome) {
-        Long count = (Long) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome", nome))
-                .setProjection(Projections.count("bean.nome"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return count > 0;
+        return validarPropriedadeUnica("nome", nome);
     }
 
     public boolean verificaSeSiglaJaCadastrada(String sigla) {
-        Long count = (Long) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.sigla", sigla))
-                .setProjection(Projections.count("bean.sigla"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return count > 0;
+        return validarPropriedadeUnica("sigla", sigla);
     }
 
-    public Optional<String> verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
-        String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.nome", nome))
-                .add(Restrictions.ne("bean.id", id))
-                .setProjection(Projections.property("bean.nome"))
-                .setMaxResults(1)
-                .uniqueResult();
-
-        return Optional.ofNullable(result);
+    public boolean verificaSeNomeJaCadastradoESeEMesmoNome(String nome, Long id) {
+        return validarPropriedadeUnica("nome", id, nome);
     }
 
-    public Optional<Object> verificaSeSiglaJaCadastradaESeEMesmaSigla(String sigla, Long id) {
+    public boolean verificaSeSiglaJaCadastradaESeEMesmaSigla(String sigla, Long id) {
+        return validarPropriedadeUnica("sigla", id, sigla);
+    }
+
+    public String consultarSiglaCurso(Long id) {
         String result = (String) HibernateConfig.getSessionFactory().openSession()
-                .createCriteria(this.getTClass(), "bean")
-                .add(Restrictions.eq("bean.sigla", sigla))
-                .add(Restrictions.ne("bean.id", id))
+                .createCriteria(Curso.class, "bean")
+                .add(Restrictions.eq("bean.id", id))
                 .setProjection(Projections.property("bean.sigla"))
                 .setMaxResults(1)
                 .uniqueResult();
 
-        return Optional.ofNullable(result);
+        return result;
     }
 }

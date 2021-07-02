@@ -2,8 +2,8 @@
   <h1 class="text-center">Cadastrar Usuário</h1>
   <hr />
   <form class="was-validated" novalidate name="usuarioForm">
-    <campo-nome type="text" id="nome" label="Nome" ng-model="usuario.nome" ng-required="true"></campo-nome>
-    <campo-nome type="date" id="dataNascimento" label="Data de nascimento" ng-model="usuario.dataNascimento" ng-required="true"></campo-nome>
+    <campo-texto type="text" id="nome" label="Nome" ng-model="usuario.nome" ng-required="true"></campo-texto>
+    <campo-texto type="date" id="dataNascimento" label="Data de nascimento" ng-model="usuario.dataNascimento" ng-required="true"></campo-texto>
     <hr />
     <div class="form-group text-center">
       <button type="button" class="btn btn-default" ui-sref="usuarioListar">Cancelar</button>

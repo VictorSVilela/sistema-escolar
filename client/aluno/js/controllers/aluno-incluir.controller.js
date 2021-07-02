@@ -1,8 +1,8 @@
 angular.module("TreinamentoApp").controller("AlunoIncluirController", AlunoIncluirController);
 
-AlunoIncluirController.$inject = ['$scope', 'AlunoService'];
+AlunoIncluirController.$inject = ['$scope', 'AlunoService', '$state'];
 
-function AlunoIncluirController($scope, AlunoService) {
+function AlunoIncluirController($scope, AlunoService, $state) {
 
     $scope.adicionarAluno = adicionarAluno;
 
@@ -11,19 +11,12 @@ function AlunoIncluirController($scope, AlunoService) {
     ////////////////////////////////////////////////
 
     function _inicializar() {
-        listar();
+        $scope.aluno = {};
     }
 
-    function listar(){
-        AlunoService.getALunos().then(response => {
-            $scope.alunos = response.data;
-        });
-    }
-
-    function adicionarAluno(aluno) {
-        AlunoService.adicionarAluno(aluno).then(response => {
-            $scope.alunos = response.data;
-            listar();
+    function adicionarAluno() {
+        AlunoService.adicionarAluno($scope.aluno).then(() => {
+            $state.go('alunoListar');
         });
     }
 }
